@@ -13,13 +13,13 @@ const (
 // Below is an example of how OpenSea displays the traits for a specific item.
 type Trait struct {
 	// The name of the trait (for example color)
-	TraitType string `json:"trait_type"`
+	TraitType string `json:"trait_type" camel:"traitType"`
 	// The value of this trait (can be a string or number)
-	Value interface{} `json:"value"`
+	Value interface{} `json:"value" camel:"value"`
 	// How this trait will be displayed (options are number, boost_percentage, boost_number, and date).
 	// See the adding metadata section for more details
-	DisplayType *TraitDisplayType `json:"display_type"`
-	MaxValue    interface{}       `json:"max_value"`
-	TraitCount  int               `json:"trait_count"`
-	Order       interface{}       `json:"order"`
+	DisplayType *TraitDisplayType `json:"display_type" camel:"displayType"`
+	MaxValue    interface{}       `json:"max_value" camel:"maxValue"`
+	TraitCount  int               `json:"trait_count" camel:"traitCount"`
+	Order       interface{}       `json:"order" camel:"order"`
 }

@@ -4,73 +4,70 @@ package model
 // You can buy them all at once in one transaction, and you can create them without any transactions or gas,
 // as long as you've already approved the assets inside.
 type Bundle struct {
-	Maker         *Account     `json:"maker"`
-	Slug          string       `json:"slug"`
-	Assets        []*Asset     `json:"assets"`
-	Name          string       `json:"name"`
-	Description   string       `json:"description"`
-	ExternalLink  *string      `json:"external_link"`
-	AssetContract *Contract    `json:"asset_contract"`
-	Permalink     string       `json:"permalink"`
-	SellOrders    []*SellOrder `json:"sell_orders"`
+	Maker         *Account     `json:"maker" camel:"maker"`
+	Slug          string       `json:"slug" camel:"slug"`
+	Assets        []*Asset     `json:"assets" camel:"assets"`
+	Name          string       `json:"name" camel:"name"`
+	Description   string       `json:"description" camel:"description"`
+	ExternalLink  *string      `json:"external_link" camel:"externalLink"`
+	AssetContract *Contract    `json:"asset_contract" camel:"assetContract"`
+	Permalink     string       `json:"permalink" camel:"permalink"`
+	SellOrders    []*SellOrder `json:"sell_orders" camel:"sellOrders"`
 }
 
 type SellOrder struct {
-	CreatedDate       string `json:"created_date"`
-	ClosingDate       string `json:"closing_date"`
-	ClosingExtendable bool   `json:"closing_extendable"`
-	ExpirationTime    int    `json:"expiration_time"`
-	ListingTime       int    `json:"listing_time"`
-	OrderHash         string `json:"order_hash"`
+	CreatedDate       string `json:"created_date" camel:"createdDate"`
+	ClosingDate       string `json:"closing_date" camel:"closingDate"`
+	ClosingExtendable bool   `json:"closing_extendable" camel:"closingExtendable"`
+	ExpirationTime    int    `json:"expiration_time" camel:"expirationTime"`
+	ListingTime       int    `json:"listing_time" camel:"listingTime"`
+	OrderHash         string `json:"order_hash" camel:"orderHash"`
 	Metadata          struct {
 		Bundle struct {
-			Assets []struct {
-				ID      string `json:"id"`
-				Address string `json:"address"`
-			} `json:"assets"`
-			Schemas     []string `json:"schemas"`
-			Name        string   `json:"name"`
-			Description string   `json:"description"`
-		} `json:"bundle"`
-	} `json:"metadata"`
-	Exchange             string                `json:"exchange"`
-	Maker                *BundleAccount        `json:"maker"`
-	Taker                *BundleAccount        `json:"taker"`
-	CurrentPrice         string                `json:"current_price"`
-	CurrentBounty        string                `json:"current_bounty"`
-	BountyMultiple       string                `json:"bounty_multiple"`
-	MakerRelayerFee      string                `json:"maker_relayer_fee"`
-	TakerRelayerFee      string                `json:"taker_relayer_fee"`
-	MakerProtocolFee     string                `json:"maker_protocol_fee"`
-	TakerProtocolFee     string                `json:"taker_protocol_fee"`
-	MakerReferrerFee     string                `json:"maker_referrer_fee"`
-	FeeRecipient         *BundleAccount        `json:"fee_recipient"`
-	FeeMethod            int                   `json:"fee_method"`
-	Side                 int                   `json:"side"`
-	SaleKind             int                   `json:"sale_kind"`
-	Target               string                `json:"target"`
-	HowToCall            int                   `json:"how_to_call"`
-	Calldata             string                `json:"calldata"`
-	ReplacementPattern   string                `json:"replacement_pattern"`
-	StaticTarget         string                `json:"static_target"`
-	StaticExtradata      string                `json:"static_extradata"`
-	PaymentToken         string                `json:"payment_token"`
-	PaymentTokenContract *PaymentTokenContract `json:"payment_token_contract"`
-	BasePrice            string                `json:"base_price"`
-	Extra                string                `json:"extra"`
-	Quantity             string                `json:"quantity"`
-	Salt                 string                `json:"salt"`
-	V                    int                   `json:"v"`
-	R                    string                `json:"r"`
-	S                    string                `json:"s"`
-	ApprovedOnChain      bool                  `json:"approved_on_chain"`
-	Cancelled            bool                  `json:"cancelled"`
-	Finalized            bool                  `json:"finalized"`
-	MarkedInvalid        bool                  `json:"marked_invalid"`
-	PrefixedHash         string                `json:"prefixed_hash"`
+			Assets      []*AssetAddress `json:"assets" camel:"assets"`
+			Schemas     []string       `json:"schemas" camel:"schemas"`
+			Name        string         `json:"name" camel:"name"`
+			Description string         `json:"description" camel:"description"`
+		} `json:"bundle" camel:"bundle"`
+	} `json:"metadata" camel:"metadata"`
+	Exchange             string                `json:"exchange" camel:"exchange"`
+	Maker                *BundleAccount        `json:"maker" camel:"maker"`
+	Taker                *BundleAccount        `json:"taker" camel:"taker"`
+	CurrentPrice         string                `json:"current_price" camel:"currentPrice"`
+	CurrentBounty        string                `json:"current_bounty" camel:"currentBounty"`
+	BountyMultiple       string                `json:"bounty_multiple" camel:"bountyMultiple"`
+	MakerRelayerFee      string                `json:"maker_relayer_fee" camel:"makerRelayerFee"`
+	TakerRelayerFee      string                `json:"taker_relayer_fee" camel:"takerRelayerFee"`
+	MakerProtocolFee     string                `json:"maker_protocol_fee" camel:"makerProtocolFee"`
+	TakerProtocolFee     string                `json:"taker_protocol_fee" camel:"takerProtocolFee"`
+	MakerReferrerFee     string                `json:"maker_referrer_fee" camel:"makerReferrerFee"`
+	FeeRecipient         *BundleAccount        `json:"fee_recipient" camel:"feeRecipient"`
+	FeeMethod            int                   `json:"fee_method" camel:"feeMethod"`
+	Side                 int                   `json:"side" camel:"side"`
+	SaleKind             int                   `json:"sale_kind" camel:"saleKind"`
+	Target               string                `json:"target" camel:"target"`
+	HowToCall            int                   `json:"how_to_call" camel:"howToCall"`
+	Calldata             string                `json:"calldata" camel:"calldata"`
+	ReplacementPattern   string                `json:"replacement_pattern" camel:"replacementPattern"`
+	StaticTarget         string                `json:"static_target" camel:"staticTarget"`
+	StaticExtradata      string                `json:"static_extradata" camel:"staticExtradata"`
+	PaymentToken         string                `json:"payment_token" camel:"paymentToken"`
+	PaymentTokenContract *PaymentTokenContract `json:"payment_token_contract" camel:"paymentTokenContract"`
+	BasePrice            string                `json:"base_price" camel:"basePrice"`
+	Extra                string                `json:"extra" camel:"extra"`
+	Quantity             string                `json:"quantity" camel:"quantity"`
+	Salt                 string                `json:"salt" camel:"salt"`
+	V                    int                   `json:"v" camel:"v"`
+	R                    string                `json:"r" camel:"r"`
+	S                    string                `json:"s" camel:"s"`
+	ApprovedOnChain      bool                  `json:"approved_on_chain" camel:"approvedOnChain"`
+	Cancelled            bool                  `json:"cancelled" camel:"cancelled"`
+	Finalized            bool                  `json:"finalized" camel:"finalized"`
+	MarkedInvalid        bool                  `json:"marked_invalid" camel:"markedInvalid"`
+	PrefixedHash         string                `json:"prefixed_hash" camel:"prefixedHash"`
 }
 
 type BundleAccount struct {
 	Account
-	User int32 `json:"user"`
+	User int32 `json:"user" camel:"user"`
 }

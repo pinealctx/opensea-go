@@ -5,80 +5,85 @@ package model
 // The below CryptoSaga hero is an example of an asset shown on OpenSea.
 type Asset struct {
 	// OpenSea NFT ID
-	ID int `json:"id"`
+	ID int `json:"id" camel:"id"`
 	// The token ID of the NFT
-	TokenID  string `json:"token_id"`
-	NumSales int    `json:"num_sales"`
+	TokenID  string `json:"token_id" camel:"tokenID"`
+	NumSales int    `json:"num_sales" camel:"numSales"`
 	// The background color to be displayed with the item
-	BackgroundColor interface{} `json:"background_color"`
+	BackgroundColor interface{} `json:"background_color" camel:"backgroundColor"`
 	// An image for the item. Note that this is the cached URL we store on our end. The original image url is image_original_url
-	ImageURL             string      `json:"image_url"`
-	ImagePreviewURL      string      `json:"image_preview_url"`
-	ImageThumbnailURL    string      `json:"image_thumbnail_url"`
-	ImageOriginalURL     string      `json:"image_original_url"`
-	AnimationURL         interface{} `json:"animation_url"`
-	AnimationOriginalURL interface{} `json:"animation_original_url"`
+	ImageURL             string      `json:"image_url" camel:"imageURL"`
+	ImagePreviewURL      string      `json:"image_preview_url" camel:"imagePreviewURL"`
+	ImageThumbnailURL    string      `json:"image_thumbnail_url" camel:"imageThumbnailURL"`
+	ImageOriginalURL     string      `json:"image_original_url" camel:"imageOriginalURL"`
+	AnimationURL         interface{} `json:"animation_url" camel:"animationURL"`
+	AnimationOriginalURL interface{} `json:"animation_original_url" camel:"animationOriginalURL"`
 	// Name of the item
-	Name        string      `json:"name"`
-	Description interface{} `json:"description"`
+	Name        string      `json:"name" camel:"name"`
+	Description interface{} `json:"description" camel:"description"`
 	// External link to the original website for the item
-	ExternalLink interface{} `json:"external_link"`
+	ExternalLink interface{} `json:"external_link" camel:"externalLink"`
 	// Dictionary of data on the contract itself (see asset contract section)
-	AssetContract *Contract   `json:"asset_contract"`
-	Permalink     string      `json:"permalink"`
-	Collection    *Collection `json:"collection"`
-	Decimals      int         `json:"decimals"`
-	TokenMetadata string      `json:"token_metadata"`
+	AssetContract *Contract   `json:"asset_contract" camel:"assetContract"`
+	Permalink     string      `json:"permalink" camel:"permalink"`
+	Collection    *Collection `json:"collection" camel:"collection"`
+	Decimals      int         `json:"decimals" camel:"decimals"`
+	TokenMetadata string      `json:"token_metadata" camel:"tokenMetadata"`
 	// Dictionary of data on the owner (see account section)
-	Owner      *Account    `json:"owner"`
-	SellOrders interface{} `json:"sell_orders"`
-	Creator    *Account    `json:"creator"`
+	Owner      *Account    `json:"owner" camel:"owner"`
+	SellOrders interface{} `json:"sell_orders" camel:"sellOrders"`
+	Creator    *Account    `json:"creator" camel:"creator"`
 	// A list of traits associated with the item (see traits section)
-	Traits []*Trait `json:"traits"`
+	Traits []*Trait `json:"traits" camel:"traits"`
 	// When this item was last sold (null if there was no last sale)
-	LastSale                *LastSale       `json:"last_sale"`
-	TopBid                  interface{}     `json:"top_bid"`
-	ListingDate             interface{}     `json:"listing_date"`
-	IsPresale               bool            `json:"is_presale"`
-	TransferFeePaymentToken interface{}     `json:"transfer_fee_payment_token"`
-	TransferFee             interface{}     `json:"transfer_fee"`
-	RelatedAssets           []interface{}   `json:"related_assets"`
-	Orders                  []*Order        `json:"orders"`
-	Auctions                []interface{}   `json:"auctions"`
-	SupportsWyvern          bool            `json:"supports_wyvern"`
-	TopOwnerships           []*TopOwnership `json:"top_ownerships"`
-	Ownership               interface{}     `json:"ownership"`
-	HighestBuyerCommitment  interface{}     `json:"highest_buyer_commitment"`
+	LastSale                *LastSale       `json:"last_sale" camel:"lastSale"`
+	TopBid                  interface{}     `json:"top_bid" camel:"topBid"`
+	ListingDate             interface{}     `json:"listing_date" camel:"listingDate"`
+	IsPresale               bool            `json:"is_presale" camel:"isPresale"`
+	TransferFeePaymentToken interface{}     `json:"transfer_fee_payment_token" camel:"transferFeePaymentToken"`
+	TransferFee             interface{}     `json:"transfer_fee" camel:"transferFee"`
+	RelatedAssets           []interface{}   `json:"related_assets" camel:"relatedAssets"`
+	Orders                  []*Order        `json:"orders" camel:"orders"`
+	Auctions                []interface{}   `json:"auctions" camel:"auctions"`
+	SupportsWyvern          bool            `json:"supports_wyvern" camel:"supportsWyvern"`
+	TopOwnerships           []*TopOwnership `json:"top_ownerships" camel:"topOwnerships"`
+	Ownership               interface{}     `json:"ownership" camel:"ownership"`
+	HighestBuyerCommitment  interface{}     `json:"highest_buyer_commitment" camel:"highestBuyerCommitment"`
 }
 
 type Transaction struct {
-	BlockHash        string   `json:"block_hash"`
-	BlockNumber      string   `json:"block_number"`
-	FromAccount      *Account `json:"from_account"`
-	ID               int      `json:"id"`
-	Timestamp        string   `json:"timestamp"`
-	ToAccount        *Account `json:"to_account"`
-	TransactionHash  string   `json:"transaction_hash"`
-	TransactionIndex string   `json:"transaction_index"`
+	BlockHash        string   `json:"block_hash" camel:"blockHash"`
+	BlockNumber      string   `json:"block_number" camel:"blockNumber"`
+	FromAccount      *Account `json:"from_account" camel:"fromAccount"`
+	ID               int      `json:"id" camel:"id"`
+	Timestamp        string   `json:"timestamp" camel:"timestamp"`
+	ToAccount        *Account `json:"to_account" camel:"toAccount"`
+	TransactionHash  string   `json:"transaction_hash" camel:"transactionHash"`
+	TransactionIndex string   `json:"transaction_index" camel:"transactionIndex"`
 }
 
 type LastSale struct {
 	Asset struct {
-		TokenID  string `json:"token_id"`
-		Decimals int    `json:"decimals"`
-	} `json:"asset"`
-	AssetBundle    interface{}   `json:"asset_bundle"`
-	EventType      string        `json:"event_type"`
-	EventTimestamp string        `json:"event_timestamp"`
-	AuctionType    interface{}   `json:"auction_type"`
-	TotalPrice     string        `json:"total_price"`
-	PaymentToken   *PaymentToken `json:"payment_token"`
-	Transaction    *Transaction  `json:"transaction"`
-	CreatedDate    string        `json:"created_date"`
-	Quantity       string        `json:"quantity"`
+		TokenID  string `json:"token_id" camel:"tokenID"`
+		Decimals int    `json:"decimals" camel:"decimals"`
+	} `json:"asset" camel:"asset"`
+	AssetBundle    interface{}   `json:"asset_bundle" camel:"assetBundle"`
+	EventType      string        `json:"event_type" camel:"eventType"`
+	EventTimestamp string        `json:"event_timestamp" camel:"eventTimestamp"`
+	AuctionType    interface{}   `json:"auction_type" camel:"auctionType"`
+	TotalPrice     string        `json:"total_price" camel:"totalPrice"`
+	PaymentToken   *PaymentToken `json:"payment_token" camel:"paymentToken"`
+	Transaction    *Transaction  `json:"transaction" camel:"transaction"`
+	CreatedDate    string        `json:"created_date" camel:"createdDate"`
+	Quantity       string        `json:"quantity" camel:"quantity"`
 }
 
 type TopOwnership struct {
-	Owner    *Account `json:"owner"`
-	Quantity string   `json:"quantity"`
+	Owner    *Account `json:"owner" camel:"owner"`
+	Quantity string   `json:"quantity" camel:"quantity"`
+}
+
+type AssetAddress struct {
+	ID      string `json:"id" camel:"id"`
+	Address string `json:"address" camel:"address"`
 }
