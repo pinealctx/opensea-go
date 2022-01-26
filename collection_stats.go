@@ -14,7 +14,7 @@ func (c *Client) CollectionStats(ctx context.Context, req *CollectionRequest) (*
 		return nil, err
 	}
 	var response CollectionStatsResponse
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}
@@ -22,5 +22,5 @@ func (c *Client) CollectionStats(ctx context.Context, req *CollectionRequest) (*
 }
 
 type CollectionStatsResponse struct {
-	Stats *model.CollectionStats `json:"stats"`
+	Stats *model.CollectionStats `opensea:"stats"`
 }

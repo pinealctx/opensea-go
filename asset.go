@@ -13,7 +13,7 @@ func (c *Client) Asset(ctx context.Context, req *AssetRequest) (*model.Asset, er
 		return nil, err
 	}
 	var response model.Asset
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}

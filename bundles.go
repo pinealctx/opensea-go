@@ -15,7 +15,7 @@ func (c *Client) Bundles(ctx context.Context, req *BundlesRequest) ([]*model.Bun
 		return nil, err
 	}
 	var response BundlesResponse
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}
@@ -44,5 +44,5 @@ type BundlesRequest struct {
 }
 
 type BundlesResponse struct {
-	Bundles []*model.Bundle `json:"bundles"`
+	Bundles []*model.Bundle `opensea:"bundles"`
 }

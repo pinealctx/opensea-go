@@ -7,5 +7,5 @@ var (
 )
 
 func newClient() *Client {
-	return New(WithAPIKey(""))
+	return New(WithTestNet())
 }

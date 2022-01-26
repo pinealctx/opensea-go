@@ -13,7 +13,7 @@ func (c *Client) Orders(ctx context.Context, req *OrderRequest) (*OrderResponse,
 		return nil, err
 	}
 	var response OrderResponse
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}
@@ -73,6 +73,6 @@ type OrderRequest struct {
 }
 
 type OrderResponse struct {
-	Count  int32          `json:"count"`
-	Orders []*model.Order `json:"orders"`
+	Count  int32          `opensea:"count"`
+	Orders []*model.Order `opensea:"orders"`
 }

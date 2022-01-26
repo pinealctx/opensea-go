@@ -1,12 +1,12 @@
 package model
 
 type User struct {
-	Username string `json:"username" camel:"username"`
+	Username string `opensea:"username" json:"username"`
 }
 
 type Account struct {
-	User          *User  `json:"user" camel:"user"`
-	ProfileImgURL string `json:"profile_img_url" camel:"profileImgURL"`
-	Address       string `json:"address" camel:"address"`
-	Config        string `json:"config" camel:"config"`
+	User          *User  `opensea:"user" json:"user"`
+	ProfileImgURL string `opensea:"profile_img_url" json:"profileImgURL"`
+	Address       string `opensea:"address" json:"address"`
+	Config        string `opensea:"config" json:"config"`
 }

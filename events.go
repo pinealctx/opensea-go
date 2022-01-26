@@ -14,7 +14,7 @@ func (c *Client) Events(ctx context.Context, req *EventsRequest) ([]*model.Event
 		return nil, err
 	}
 	var response EventsResponse
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}
@@ -51,5 +51,5 @@ type EventsRequest struct {
 }
 
 type EventsResponse struct {
-	AssetEvents []*model.Event `json:"asset_events"`
+	AssetEvents []*model.Event `opensea:"asset_events"`
 }

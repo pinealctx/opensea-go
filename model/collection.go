@@ -8,124 +8,124 @@ import "github.com/shopspring/decimal"
 // Visit it(https://docs.opensea.io/reference/collection-model) to learn anymore.
 type Collection struct {
 	// The collection name. Typically derived from the first contract imported to the collection but can be changed by the user
-	Name string `json:"name" camel:"name"`
+	Name string `opensea:"name" json:"name"`
 	// Description for the model
-	Description      string  `json:"description" camel:"description"`
-	ShortDescription *string `json:"short_description" camel:"shortDescription"`
+	Description      string  `opensea:"description" json:"description"`
+	ShortDescription *string `opensea:"short_description" json:"shortDescription"`
 	// The collection slug that is used to link to the collection on OpenSea.
 	// This value can change by the owner but must be unique across all collection slugs in OpenSea
-	Slug string `json:"slug" camel:"slug"`
+	Slug string `opensea:"slug" json:"slug"`
 	// External link to the original website for the collection
-	ExternalURL string `json:"external_url" camel:"externalURL"`
+	ExternalURL string `opensea:"external_url" json:"externalURL"`
 	// An image for the collection. Note that this is the cached URL we store on our end.
 	// The original image url is image_original_url
-	ImageURL      string  `json:"image_url" camel:"imageURL"`
-	LargeImageURL *string `json:"large_image_url" camel:"largeImageURL"`
+	ImageURL      string  `opensea:"image_url" json:"imageURL"`
+	LargeImageURL *string `opensea:"large_image_url" json:"largeImageURL"`
 	// Approved editors on this collection.
-	Editors []string `json:"editors" camel:"editors"`
+	Editors []string `opensea:"editors" json:"editors"`
 	// The payment tokens accepted for this collection
-	PaymentTokens []*PaymentToken `json:"payment_tokens" camel:"paymentTokens"`
+	PaymentTokens []*PaymentToken `opensea:"payment_tokens" json:"paymentTokens"`
 	// A list of the contracts that are associated with this collection
-	PrimaryAssetContracts []*PrimaryAssetContract `json:"primary_asset_contracts" camel:"primaryAssetContracts"`
+	PrimaryAssetContracts []*PrimaryAssetContract `opensea:"primary_asset_contracts" json:"primaryAssetContracts"`
 	// A dictionary listing all the trait types available within this collection
-	Traits map[string]map[string]int32 `json:"traits" camel:"traits"`
+	Traits map[string]map[string]int32 `opensea:"traits" json:"traits"`
 	// A dictionary containing some sales statistics related to this collection, including trade volume and floor prices
-	Stats *CollectionStats `json:"stats" camel:"stats"`
+	Stats *CollectionStats `opensea:"stats" json:"stats"`
 	// Image used in the horizontal top banner for the collection.
-	BannerImageURL string `json:"banner_image_url" camel:"bannerImageURL"`
+	BannerImageURL string `opensea:"banner_image_url" json:"bannerImageURL"`
 	// The payout address for the collection's royalties
-	PayoutAddress string `json:"payout_address" camel:"payoutAddress"`
+	PayoutAddress string `opensea:"payout_address" json:"payoutAddress"`
 	// The collector's fees that get paid out to them when sales are made for their collections
-	DevSellerFeeBasisPoints string `json:"dev_seller_fee_basis_points" camel:"devSellerFeeBasisPoints"`
+	DevSellerFeeBasisPoints string `opensea:"dev_seller_fee_basis_points" json:"devSellerFeeBasisPoints"`
 	// The collection's approval status within OpenSea.
 	// Can be not_requested (brand new collections), requested (collections that requested safelisting on our site),
 	// approved (collections that are approved on our site and can be found in search results),
 	// and verified (verified collections)
-	SafelistRequestStatus string `json:"safelist_request_status" camel:"safelistRequestStatus"`
+	SafelistRequestStatus string `opensea:"safelist_request_status" json:"safelistRequestStatus"`
 
-	CreatedDate                 string      `json:"created_date" camel:"createdDate"`
-	DefaultToFiat               bool        `json:"default_to_fiat" camel:"defaultToFiat"`
-	DevBuyerFeeBasisPoints      string      `json:"dev_buyer_fee_basis_points" camel:"devBuyerFeeBasisPoints"`
-	DisplayData                 DisplayData `json:"display_data" camel:"displayData"`
-	Featured                    bool        `json:"featured" camel:"featured"`
-	FeaturedImageURL            *string     `json:"featured_image_url" camel:"featuredImageURL"`
-	Hidden                      bool        `json:"hidden" camel:"hidden"`
-	IsSubjectToWhitelist        bool        `json:"is_subject_to_whitelist" camel:"isSubjectToWhitelist"`
-	OnlyProxiedTransfers        bool        `json:"only_proxied_transfers" camel:"onlyProxiedTransfers"`
-	OpenseaBuyerFeeBasisPoints  string      `json:"opensea_buyer_fee_basis_points" camel:"openseaBuyerFeeBasisPoints"`
-	OpenseaSellerFeeBasisPoints string      `json:"opensea_seller_fee_basis_points" camel:"openseaSellerFeeBasisPoints"`
-	RequireEmail                bool        `json:"require_email" camel:"requireEmail"`
+	CreatedDate                 string      `opensea:"created_date" json:"createdDate"`
+	DefaultToFiat               bool        `opensea:"default_to_fiat" json:"defaultToFiat"`
+	DevBuyerFeeBasisPoints      string      `opensea:"dev_buyer_fee_basis_points" json:"devBuyerFeeBasisPoints"`
+	DisplayData                 DisplayData `opensea:"display_data" json:"displayData"`
+	Featured                    bool        `opensea:"featured" json:"featured"`
+	FeaturedImageURL            *string     `opensea:"featured_image_url" json:"featuredImageURL"`
+	Hidden                      bool        `opensea:"hidden" json:"hidden"`
+	IsSubjectToWhitelist        bool        `opensea:"is_subject_to_whitelist" json:"isSubjectToWhitelist"`
+	OnlyProxiedTransfers        bool        `opensea:"only_proxied_transfers" json:"onlyProxiedTransfers"`
+	OpenseaBuyerFeeBasisPoints  string      `opensea:"opensea_buyer_fee_basis_points" json:"openseaBuyerFeeBasisPoints"`
+	OpenseaSellerFeeBasisPoints string      `opensea:"opensea_seller_fee_basis_points" json:"openseaSellerFeeBasisPoints"`
+	RequireEmail                bool        `opensea:"require_email" json:"requireEmail"`
 
-	TwitterUsername   *string `json:"twitter_username" camel:"twitterUsername"`
-	InstagramUsername string  `json:"instagram_username" camel:"instagramUsername"`
-	MediumUsername    *string `json:"medium_username" camel:"mediumUsername"`
+	TwitterUsername   *string `opensea:"twitter_username" json:"twitterUsername"`
+	InstagramUsername string  `opensea:"instagram_username" json:"instagramUsername"`
+	MediumUsername    *string `opensea:"medium_username" json:"mediumUsername"`
 
-	TelegramURL *string `json:"telegram_url" camel:"telegramURL"`
-	DiscordURL  string  `json:"discord_url" camel:"discordURL"`
-	ChatURL     *string `json:"chat_url" camel:"chatURL"`
-	WikiURL     *string `json:"wiki_url" camel:"wikiURL"`
+	TelegramURL *string `opensea:"telegram_url" json:"telegramURL"`
+	DiscordURL  string  `opensea:"discord_url" json:"discordURL"`
+	ChatURL     *string `opensea:"chat_url" json:"chatURL"`
+	WikiURL     *string `opensea:"wiki_url" json:"wikiURL"`
 }
 
 type PaymentToken struct {
-	ID       int              `json:"id" camel:"id"`
-	Symbol   string           `json:"symbol" camel:"symbol"`
-	Address  string           `json:"address" camel:"address"`
-	ImageURL string           `json:"image_url" camel:"imageURL"`
-	Name     string           `json:"name" camel:"name"`
-	Decimals int              `json:"decimals" camel:"decimals"`
-	EthPrice *decimal.Decimal `json:"eth_price" camel:"ethPrice"`
-	UsdPrice *decimal.Decimal `json:"usd_price" camel:"usdPrice"`
+	ID       int              `opensea:"id" json:"id"`
+	Symbol   string           `opensea:"symbol" json:"symbol"`
+	Address  string           `opensea:"address" json:"address"`
+	ImageURL string           `opensea:"image_url" json:"imageURL"`
+	Name     string           `opensea:"name" json:"name"`
+	Decimals int              `opensea:"decimals" json:"decimals"`
+	EthPrice *decimal.Decimal `opensea:"eth_price" json:"ethPrice"`
+	UsdPrice *decimal.Decimal `opensea:"usd_price" json:"usdPrice"`
 }
 
 type PrimaryAssetContract struct {
-	Address                     string  `json:"address" camel:"address"`
-	AssetContractType           string  `json:"asset_contract_type" camel:"assetContractType"`
-	CreatedDate                 string  `json:"created_date" camel:"createdDate"`
-	Name                        string  `json:"name" camel:"name"`
-	NftVersion                  string  `json:"nft_version" camel:"nftVersion"`
-	OpenseaVersion              *string `json:"opensea_version" camel:"openseaVersion"`
-	Owner                       int     `json:"owner" camel:"owner"`
-	SchemaName                  string  `json:"schema_name" camel:"schemaName"`
-	Symbol                      string  `json:"symbol" camel:"symbol"`
-	TotalSupply                 string  `json:"total_supply" camel:"totalSupply"`
-	Description                 string  `json:"description" camel:"description"`
-	ExternalLink                string  `json:"external_link" camel:"externalLink"`
-	ImageURL                    string  `json:"image_url" camel:"imageURL"`
-	DefaultToFiat               bool    `json:"default_to_fiat" camel:"defaultToFiat"`
-	DevBuyerFeeBasisPoints      int     `json:"dev_buyer_fee_basis_points" camel:"devBuyerFeeBasisPoints"`
-	DevSellerFeeBasisPoints     int     `json:"dev_seller_fee_basis_points" camel:"devSellerFeeBasisPoints"`
-	OnlyProxiedTransfers        bool    `json:"only_proxied_transfers" camel:"onlyProxiedTransfers"`
-	OpenseaBuyerFeeBasisPoints  int     `json:"opensea_buyer_fee_basis_points" camel:"openseaBuyerFeeBasisPoints"`
-	OpenseaSellerFeeBasisPoints int     `json:"opensea_seller_fee_basis_points" camel:"openseaSellerFeeBasisPoints"`
-	BuyerFeeBasisPoints         int     `json:"buyer_fee_basis_points" camel:"buyerFeeBasisPoints"`
-	SellerFeeBasisPoints        int     `json:"seller_fee_basis_points" camel:"sellerFeeBasisPoints"`
-	PayoutAddress               string  `json:"payout_address" camel:"payoutAddress"`
+	Address                     string  `opensea:"address" json:"address"`
+	AssetContractType           string  `opensea:"asset_contract_type" json:"assetContractType"`
+	CreatedDate                 string  `opensea:"created_date" json:"createdDate"`
+	Name                        string  `opensea:"name" json:"name"`
+	NftVersion                  string  `opensea:"nft_version" json:"nftVersion"`
+	OpenseaVersion              *string `opensea:"opensea_version" json:"openseaVersion"`
+	Owner                       int     `opensea:"owner" json:"owner"`
+	SchemaName                  string  `opensea:"schema_name" json:"schemaName"`
+	Symbol                      string  `opensea:"symbol" json:"symbol"`
+	TotalSupply                 string  `opensea:"total_supply" json:"totalSupply"`
+	Description                 string  `opensea:"description" json:"description"`
+	ExternalLink                string  `opensea:"external_link" json:"externalLink"`
+	ImageURL                    string  `opensea:"image_url" json:"imageURL"`
+	DefaultToFiat               bool    `opensea:"default_to_fiat" json:"defaultToFiat"`
+	DevBuyerFeeBasisPoints      int     `opensea:"dev_buyer_fee_basis_points" json:"devBuyerFeeBasisPoints"`
+	DevSellerFeeBasisPoints     int     `opensea:"dev_seller_fee_basis_points" json:"devSellerFeeBasisPoints"`
+	OnlyProxiedTransfers        bool    `opensea:"only_proxied_transfers" json:"onlyProxiedTransfers"`
+	OpenseaBuyerFeeBasisPoints  int     `opensea:"opensea_buyer_fee_basis_points" json:"openseaBuyerFeeBasisPoints"`
+	OpenseaSellerFeeBasisPoints int     `opensea:"opensea_seller_fee_basis_points" json:"openseaSellerFeeBasisPoints"`
+	BuyerFeeBasisPoints         int     `opensea:"buyer_fee_basis_points" json:"buyerFeeBasisPoints"`
+	SellerFeeBasisPoints        int     `opensea:"seller_fee_basis_points" json:"sellerFeeBasisPoints"`
+	PayoutAddress               string  `opensea:"payout_address" json:"payoutAddress"`
 }
 
 type CollectionStats struct {
-	OneDayVolume          float64 `json:"one_day_volume" camel:"oneDayVolume"`
-	OneDayChange          float64 `json:"one_day_change" camel:"oneDayChange"`
-	OneDaySales           float64 `json:"one_day_sales" camel:"oneDaySales"`
-	OneDayAveragePrice    float64 `json:"one_day_average_price" camel:"oneDayAveragePrice"`
-	SevenDayVolume        float64 `json:"seven_day_volume" camel:"sevenDayVolume"`
-	SevenDayChange        float64 `json:"seven_day_change" camel:"sevenDayChange"`
-	SevenDaySales         float64 `json:"seven_day_sales" camel:"sevenDaySales"`
-	SevenDayAveragePrice  float64 `json:"seven_day_average_price" camel:"sevenDayAveragePrice"`
-	ThirtyDayVolume       float64 `json:"thirty_day_volume" camel:"thirtyDayVolume"`
-	ThirtyDayChange       float64 `json:"thirty_day_change" camel:"thirtyDayChange"`
-	ThirtyDaySales        float64 `json:"thirty_day_sales" camel:"thirtyDaySales"`
-	ThirtyDayAveragePrice float64 `json:"thirty_day_average_price" camel:"thirtyDayAveragePrice"`
-	TotalVolume           float64 `json:"total_volume" camel:"totalVolume"`
-	TotalSales            float64 `json:"total_sales" camel:"totalSales"`
-	TotalSupply           float64 `json:"total_supply" camel:"totalSupply"`
-	Count                 float64 `json:"count" camel:"count"`
-	NumOwners             int     `json:"num_owners" camel:"numOwners"`
-	AveragePrice          float64 `json:"average_price" camel:"averagePrice"`
-	NumReports            int     `json:"num_reports" camel:"numReports"`
-	MarketCap             float64 `json:"market_cap" camel:"marketCap"`
-	FloorPrice            float64 `json:"floor_price" camel:"floorPrice"`
+	OneDayVolume          float64 `opensea:"one_day_volume" json:"oneDayVolume"`
+	OneDayChange          float64 `opensea:"one_day_change" json:"oneDayChange"`
+	OneDaySales           float64 `opensea:"one_day_sales" json:"oneDaySales"`
+	OneDayAveragePrice    float64 `opensea:"one_day_average_price" json:"oneDayAveragePrice"`
+	SevenDayVolume        float64 `opensea:"seven_day_volume" json:"sevenDayVolume"`
+	SevenDayChange        float64 `opensea:"seven_day_change" json:"sevenDayChange"`
+	SevenDaySales         float64 `opensea:"seven_day_sales" json:"sevenDaySales"`
+	SevenDayAveragePrice  float64 `opensea:"seven_day_average_price" json:"sevenDayAveragePrice"`
+	ThirtyDayVolume       float64 `opensea:"thirty_day_volume" json:"thirtyDayVolume"`
+	ThirtyDayChange       float64 `opensea:"thirty_day_change" json:"thirtyDayChange"`
+	ThirtyDaySales        float64 `opensea:"thirty_day_sales" json:"thirtyDaySales"`
+	ThirtyDayAveragePrice float64 `opensea:"thirty_day_average_price" json:"thirtyDayAveragePrice"`
+	TotalVolume           float64 `opensea:"total_volume" json:"totalVolume"`
+	TotalSales            float64 `opensea:"total_sales" json:"totalSales"`
+	TotalSupply           float64 `opensea:"total_supply" json:"totalSupply"`
+	Count                 float64 `opensea:"count" json:"count"`
+	NumOwners             int     `opensea:"num_owners" json:"numOwners"`
+	AveragePrice          float64 `opensea:"average_price" json:"averagePrice"`
+	NumReports            int     `opensea:"num_reports" json:"numReports"`
+	MarketCap             float64 `opensea:"market_cap" json:"marketCap"`
+	FloorPrice            float64 `opensea:"floor_price" json:"floorPrice"`
 }
 
 type DisplayData struct {
-	CardDisplayStyle string `json:"card_display_style" camel:"cardDisplayStyle"`
+	CardDisplayStyle string `opensea:"card_display_style" json:"cardDisplayStyle"`
 }

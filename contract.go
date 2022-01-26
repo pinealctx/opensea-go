@@ -13,7 +13,7 @@ func (c *Client) Contract(ctx context.Context, req *ContractRequest) (*model.Con
 		return nil, err
 	}
 	var response model.Contract
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}

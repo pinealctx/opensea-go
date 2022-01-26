@@ -4,70 +4,70 @@ package model
 // You can buy them all at once in one transaction, and you can create them without any transactions or gas,
 // as long as you've already approved the assets inside.
 type Bundle struct {
-	Maker         *Account     `json:"maker" camel:"maker"`
-	Slug          string       `json:"slug" camel:"slug"`
-	Assets        []*Asset     `json:"assets" camel:"assets"`
-	Name          string       `json:"name" camel:"name"`
-	Description   string       `json:"description" camel:"description"`
-	ExternalLink  *string      `json:"external_link" camel:"externalLink"`
-	AssetContract *Contract    `json:"asset_contract" camel:"assetContract"`
-	Permalink     string       `json:"permalink" camel:"permalink"`
-	SellOrders    []*SellOrder `json:"sell_orders" camel:"sellOrders"`
+	Maker         *Account     `opensea:"maker" json:"maker"`
+	Slug          string       `opensea:"slug" json:"slug"`
+	Assets        []*Asset     `opensea:"assets" json:"assets"`
+	Name          string       `opensea:"name" json:"name"`
+	Description   string       `opensea:"description" json:"description"`
+	ExternalLink  *string      `opensea:"external_link" json:"externalLink"`
+	AssetContract *Contract    `opensea:"asset_contract" json:"assetContract"`
+	Permalink     string       `opensea:"permalink" json:"permalink"`
+	SellOrders    []*SellOrder `opensea:"sell_orders" json:"sellOrders"`
 }
 
 type SellOrder struct {
-	CreatedDate       string `json:"created_date" camel:"createdDate"`
-	ClosingDate       string `json:"closing_date" camel:"closingDate"`
-	ClosingExtendable bool   `json:"closing_extendable" camel:"closingExtendable"`
-	ExpirationTime    int    `json:"expiration_time" camel:"expirationTime"`
-	ListingTime       int    `json:"listing_time" camel:"listingTime"`
-	OrderHash         string `json:"order_hash" camel:"orderHash"`
+	CreatedDate       string `opensea:"created_date" json:"createdDate"`
+	ClosingDate       string `opensea:"closing_date" json:"closingDate"`
+	ClosingExtendable bool   `opensea:"closing_extendable" json:"closingExtendable"`
+	ExpirationTime    int    `opensea:"expiration_time" json:"expirationTime"`
+	ListingTime       int    `opensea:"listing_time" json:"listingTime"`
+	OrderHash         string `opensea:"order_hash" json:"orderHash"`
 	Metadata          struct {
 		Bundle struct {
-			Assets      []*AssetAddress `json:"assets" camel:"assets"`
-			Schemas     []string       `json:"schemas" camel:"schemas"`
-			Name        string         `json:"name" camel:"name"`
-			Description string         `json:"description" camel:"description"`
-		} `json:"bundle" camel:"bundle"`
-	} `json:"metadata" camel:"metadata"`
-	Exchange             string                `json:"exchange" camel:"exchange"`
-	Maker                *BundleAccount        `json:"maker" camel:"maker"`
-	Taker                *BundleAccount        `json:"taker" camel:"taker"`
-	CurrentPrice         string                `json:"current_price" camel:"currentPrice"`
-	CurrentBounty        string                `json:"current_bounty" camel:"currentBounty"`
-	BountyMultiple       string                `json:"bounty_multiple" camel:"bountyMultiple"`
-	MakerRelayerFee      string                `json:"maker_relayer_fee" camel:"makerRelayerFee"`
-	TakerRelayerFee      string                `json:"taker_relayer_fee" camel:"takerRelayerFee"`
-	MakerProtocolFee     string                `json:"maker_protocol_fee" camel:"makerProtocolFee"`
-	TakerProtocolFee     string                `json:"taker_protocol_fee" camel:"takerProtocolFee"`
-	MakerReferrerFee     string                `json:"maker_referrer_fee" camel:"makerReferrerFee"`
-	FeeRecipient         *BundleAccount        `json:"fee_recipient" camel:"feeRecipient"`
-	FeeMethod            int                   `json:"fee_method" camel:"feeMethod"`
-	Side                 int                   `json:"side" camel:"side"`
-	SaleKind             int                   `json:"sale_kind" camel:"saleKind"`
-	Target               string                `json:"target" camel:"target"`
-	HowToCall            int                   `json:"how_to_call" camel:"howToCall"`
-	Calldata             string                `json:"calldata" camel:"calldata"`
-	ReplacementPattern   string                `json:"replacement_pattern" camel:"replacementPattern"`
-	StaticTarget         string                `json:"static_target" camel:"staticTarget"`
-	StaticExtradata      string                `json:"static_extradata" camel:"staticExtradata"`
-	PaymentToken         string                `json:"payment_token" camel:"paymentToken"`
-	PaymentTokenContract *PaymentTokenContract `json:"payment_token_contract" camel:"paymentTokenContract"`
-	BasePrice            string                `json:"base_price" camel:"basePrice"`
-	Extra                string                `json:"extra" camel:"extra"`
-	Quantity             string                `json:"quantity" camel:"quantity"`
-	Salt                 string                `json:"salt" camel:"salt"`
-	V                    int                   `json:"v" camel:"v"`
-	R                    string                `json:"r" camel:"r"`
-	S                    string                `json:"s" camel:"s"`
-	ApprovedOnChain      bool                  `json:"approved_on_chain" camel:"approvedOnChain"`
-	Cancelled            bool                  `json:"cancelled" camel:"cancelled"`
-	Finalized            bool                  `json:"finalized" camel:"finalized"`
-	MarkedInvalid        bool                  `json:"marked_invalid" camel:"markedInvalid"`
-	PrefixedHash         string                `json:"prefixed_hash" camel:"prefixedHash"`
+			Assets      []*AssetAddress `opensea:"assets" json:"assets"`
+			Schemas     []string        `opensea:"schemas" json:"schemas"`
+			Name        string          `opensea:"name" json:"name"`
+			Description string          `opensea:"description" json:"description"`
+		} `opensea:"bundle" json:"bundle"`
+	} `opensea:"metadata" json:"metadata"`
+	Exchange             string                `opensea:"exchange" json:"exchange"`
+	Maker                *BundleAccount        `opensea:"maker" json:"maker"`
+	Taker                *BundleAccount        `opensea:"taker" json:"taker"`
+	CurrentPrice         string                `opensea:"current_price" json:"currentPrice"`
+	CurrentBounty        string                `opensea:"current_bounty" json:"currentBounty"`
+	BountyMultiple       string                `opensea:"bounty_multiple" json:"bountyMultiple"`
+	MakerRelayerFee      string                `opensea:"maker_relayer_fee" json:"makerRelayerFee"`
+	TakerRelayerFee      string                `opensea:"taker_relayer_fee" json:"takerRelayerFee"`
+	MakerProtocolFee     string                `opensea:"maker_protocol_fee" json:"makerProtocolFee"`
+	TakerProtocolFee     string                `opensea:"taker_protocol_fee" json:"takerProtocolFee"`
+	MakerReferrerFee     string                `opensea:"maker_referrer_fee" json:"makerReferrerFee"`
+	FeeRecipient         *BundleAccount        `opensea:"fee_recipient" json:"feeRecipient"`
+	FeeMethod            int                   `opensea:"fee_method" json:"feeMethod"`
+	Side                 int                   `opensea:"side" json:"side"`
+	SaleKind             int                   `opensea:"sale_kind" json:"saleKind"`
+	Target               string                `opensea:"target" json:"target"`
+	HowToCall            int                   `opensea:"how_to_call" json:"howToCall"`
+	Calldata             string                `opensea:"calldata" json:"calldata"`
+	ReplacementPattern   string                `opensea:"replacement_pattern" json:"replacementPattern"`
+	StaticTarget         string                `opensea:"static_target" json:"staticTarget"`
+	StaticExtradata      string                `opensea:"static_extradata" json:"staticExtradata"`
+	PaymentToken         string                `opensea:"payment_token" json:"paymentToken"`
+	PaymentTokenContract *PaymentTokenContract `opensea:"payment_token_contract" json:"paymentTokenContract"`
+	BasePrice            string                `opensea:"base_price" json:"basePrice"`
+	Extra                string                `opensea:"extra" json:"extra"`
+	Quantity             string                `opensea:"quantity" json:"quantity"`
+	Salt                 string                `opensea:"salt" json:"salt"`
+	V                    int                   `opensea:"v" json:"v"`
+	R                    string                `opensea:"r" json:"r"`
+	S                    string                `opensea:"s" json:"s"`
+	ApprovedOnChain      bool                  `opensea:"approved_on_chain" json:"approvedOnChain"`
+	Cancelled            bool                  `opensea:"cancelled" json:"cancelled"`
+	Finalized            bool                  `opensea:"finalized" json:"finalized"`
+	MarkedInvalid        bool                  `opensea:"marked_invalid" json:"markedInvalid"`
+	PrefixedHash         string                `opensea:"prefixed_hash" json:"prefixedHash"`
 }
 
 type BundleAccount struct {
 	Account
-	User int32 `json:"user" camel:"user"`
+	User int32 `opensea:"user" json:"user"`
 }

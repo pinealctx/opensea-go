@@ -14,7 +14,7 @@ func (c *Client) Collection(ctx context.Context, req *CollectionRequest) (*model
 		return nil, err
 	}
 	var response CollectionResponse
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}
@@ -26,5 +26,5 @@ type CollectionRequest struct {
 }
 
 type CollectionResponse struct {
-	Collection *model.Collection `json:"collection"`
+	Collection *model.Collection `opensea:"collection"`
 }

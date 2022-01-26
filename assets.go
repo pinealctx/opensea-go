@@ -13,7 +13,7 @@ func (c *Client) Assets(ctx context.Context, req *AssetsRequest) ([]*model.Asset
 		return nil, err
 	}
 	var response AssetsResponse
-	err = rsp.JSONUnmarshal(&response)
+	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, WrapperRspError(rsp)
 	}
@@ -50,5 +50,5 @@ type AssetsRequest struct {
 }
 
 type AssetsResponse struct {
-	Assets []*model.Asset `json:"assets"`
+	Assets []*model.Asset `opensea:"assets"`
 }
