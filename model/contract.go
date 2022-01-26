@@ -15,32 +15,32 @@ const (
 // such as the CryptoKitties contract or the CoolCats contract.
 type Contract struct {
 	// Address of the asset contract
-	Address           string       `json:"address"`
-	AssetContractType ContractType `json:"asset_contract_type"`
-	CreatedDate       string       `json:"created_date"`
+	Address           string       `json:"address" camel:"address"`
+	AssetContractType ContractType `json:"asset_contract_type" camel:"assetContractType"`
+	CreatedDate       string       `json:"created_date" camel:"createdDate"`
 	// Name of the asset contract
-	Name           string  `json:"name"`
-	NftVersion     string  `json:"nft_version"`
-	OpenseaVersion *string `json:"opensea_version"`
-	Owner          int     `json:"owner"`
-	SchemaName     string  `json:"schema_name"`
+	Name           string  `json:"name" camel:"name"`
+	NftVersion     string  `json:"nft_version" camel:"nftVersion"`
+	OpenseaVersion *string `json:"opensea_version" camel:"openseaVersion"`
+	Owner          int     `json:"owner" camel:"owner"`
+	SchemaName     string  `json:"schema_name" camel:"schemaName"`
 	// Symbol, such as CKITTY
-	Symbol      string `json:"symbol"`
-	TotalSupply string `json:"total_supply"`
+	Symbol      string `json:"symbol" camel:"symbol"`
+	TotalSupply string `json:"total_supply" camel:"totalSupply"`
 	// Description of the asset contract
-	Description string `json:"description"`
+	Description string `json:"description" camel:"description"`
 	// Link to the original website for this contract
-	ExternalLink string `json:"external_link"`
+	ExternalLink string `json:"external_link" camel:"externalLink"`
 	// Image associated with the asset contract
-	ImageURL                    string      `json:"image_url"`
-	DefaultToFiat               bool        `json:"default_to_fiat"`
-	DevBuyerFeeBasisPoints      int         `json:"dev_buyer_fee_basis_points"`
-	DevSellerFeeBasisPoints     int         `json:"dev_seller_fee_basis_points"`
-	OnlyProxiedTransfers        bool        `json:"only_proxied_transfers"`
-	OpenseaBuyerFeeBasisPoints  int         `json:"opensea_buyer_fee_basis_points"`
-	OpenseaSellerFeeBasisPoints int         `json:"opensea_seller_fee_basis_points"`
-	BuyerFeeBasisPoints         int         `json:"buyer_fee_basis_points"`
-	SellerFeeBasisPoints        int         `json:"seller_fee_basis_points"`
-	PayoutAddress               string      `json:"payout_address"`
-	Collection                  *Collection `json:"collection,omitempty"`
+	ImageURL                    string      `json:"image_url" camel:"imageURL"`
+	DefaultToFiat               bool        `json:"default_to_fiat" camel:"defaultToFiat"`
+	DevBuyerFeeBasisPoints      int         `json:"dev_buyer_fee_basis_points" camel:"devBuyerFeeBasisPoints"`
+	DevSellerFeeBasisPoints     int         `json:"dev_seller_fee_basis_points" camel:"devSellerFeeBasisPoints"`
+	OnlyProxiedTransfers        bool        `json:"only_proxied_transfers" camel:"onlyProxiedTransfers"`
+	OpenseaBuyerFeeBasisPoints  int         `json:"opensea_buyer_fee_basis_points" camel:"openseaBuyerFeeBasisPoints"`
+	OpenseaSellerFeeBasisPoints int         `json:"opensea_seller_fee_basis_points" camel:"openseaSellerFeeBasisPoints"`
+	BuyerFeeBasisPoints         int         `json:"buyer_fee_basis_points" camel:"buyerFeeBasisPoints"`
+	SellerFeeBasisPoints        int         `json:"seller_fee_basis_points" camel:"sellerFeeBasisPoints"`
+	PayoutAddress               string      `json:"payout_address" camel:"payoutAddress"`
+	Collection                  *Collection `json:"collection,omitempty" camel:"collection"`
 }
