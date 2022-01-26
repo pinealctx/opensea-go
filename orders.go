@@ -1,9 +1,23 @@
 package opensea
 
-import "context"
+import (
+	"context"
+	"github.com/pinealctx/opensea-go/model"
+	"github.com/pinealctx/restgo"
+)
 
-func (c *Client) Order(ctx context.Context) {
-
+// Orders How to fetch orders from the OpenSea system
+func (c *Client) Orders(ctx context.Context, req *OrderRequest) (*OrderResponse, error) {
+	var rsp, err = c.Get(ctx, "/wyvern/v1/orders", restgo.ObjectParams(req)...)
+	if err != nil {
+		return nil, err
+	}
+	var response OrderResponse
+	err = rsp.JSONUnmarshal(&response)
+	if err != nil {
+		return nil, WrapperRspError(rsp)
+	}
+	return &response, nil
 }
 
 type OrderRequest struct {
@@ -39,12 +53,12 @@ type OrderRequest struct {
 	TokenIDs []string `query:"token_ids"`
 	// Filter by the side of the order.
 	// 0 for buy orders and 1 for sale orders.
-	Side int32 `query:"side"`
+	Side model.Side `query:"side"`
 	// Filter by the kind of sell order.
 	// 0 for fixed-price sales or min-bid auctions,
 	// and 1 for declining-price Dutch Auctions.
 	// NOTE: use only_english=true for filtering for only English Auctions
-	SaleKind int32 `query:"sale_kind"`
+	SaleKind model.SaleKind `query:"sale_kind"`
 	// Limit
 	Limit int32 `query:"limit,required"`
 	// Offset
@@ -56,4 +70,9 @@ type OrderRequest struct {
 	// Can be asc or desc for ascending or descending sort.
 	// For example, to see the cheapest orders, do order_direction asc and order_by eth_price.
 	OrderDirection string `query:"order_direction,required"`
+}
+
+type OrderResponse struct {
+	Count  int32          `json:"count"`
+	Orders []*model.Order `json:"orders"`
 }

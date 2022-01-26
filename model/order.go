@@ -1,5 +1,23 @@
 package model
 
+type Side int32
+
+const (
+	SideBuy Side = iota
+	SideSell
+)
+
+// SaleKind the kind of sell order
+// NOTE: use only_english=true for filtering for only English Auctions
+type SaleKind int32
+
+const (
+	// SaleKindFixedOrMinBidPrice fixed-price sales or min-bid auctions
+	SaleKindFixedOrMinBidPrice SaleKind = iota
+	// SaleKindDecliningPrice declining-price Dutch Auctions
+	SaleKindDecliningPrice
+)
+
 type Order struct {
 	CreatedDate          string                `json:"created_date"`
 	ClosingDate          string                `json:"closing_date"`
@@ -21,8 +39,8 @@ type Order struct {
 	MakerReferrerFee     string                `json:"maker_referrer_fee"`
 	FeeRecipient         *Account              `json:"fee_recipient"`
 	FeeMethod            int                   `json:"fee_method"`
-	Side                 int                   `json:"side"`
-	SaleKind             int                   `json:"sale_kind"`
+	Side                 Side                  `json:"side"`
+	SaleKind             SaleKind              `json:"sale_kind"`
 	Target               string                `json:"target"`
 	HowToCall            int                   `json:"how_to_call"`
 	Calldata             string                `json:"calldata"`
@@ -43,6 +61,10 @@ type Order struct {
 	Finalized            bool                  `json:"finalized"`
 	MarkedInvalid        bool                  `json:"marked_invalid"`
 	PrefixedHash         string                `json:"prefixed_hash"`
+
+	ID          int64   `json:"id,omitempty"`
+	Asset       *Asset  `json:"asset"`
+	AssetBundle *Bundle `json:"asset_bundle"`
 }
 
 type Metadata struct {
