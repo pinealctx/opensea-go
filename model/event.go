@@ -34,42 +34,42 @@ const (
 // Event Asset events represent state changes that occur for assets.
 // This includes putting them on sale, bidding on them, selling them, cancelling sales, transferring them, and more.
 type Event struct {
-	ApprovedAccount *Account `json:"approved_account" camel:"approvedAccount"`
+	ApprovedAccount *Account `opensea:"approved_account" json:"approvedAccount"`
 	// A subfield containing a simplified version of the Asset or Asset Bundle on which this event happened
-	Asset *Asset `json:"asset" camel:"asset"`
+	Asset *Asset `opensea:"asset" json:"asset"`
 	// Ditto
-	AssetBundle     *Bundle      `json:"asset_bundle" camel:"assetBundle"`
-	AuctionType     *AuctionType `json:"auction_type" camel:"auctionType"`
-	BidAmount       string       `json:"bid_amount" camel:"bidAmount"`
-	CollectionSlug  string       `json:"collection_slug" camel:"collectionSlug"`
-	ContractAddress string       `json:"contract_address" camel:"contractAddress"`
+	AssetBundle     *Bundle      `opensea:"asset_bundle" json:"assetBundle"`
+	AuctionType     *AuctionType `opensea:"auction_type" json:"auctionType"`
+	BidAmount       string       `opensea:"bid_amount" json:"bidAmount"`
+	CollectionSlug  string       `opensea:"collection_slug" json:"collectionSlug"`
+	ContractAddress string       `opensea:"contract_address" json:"contractAddress"`
 	// When the event was recorded
-	CreatedDate             string           `json:"created_date" camel:"createdDate"`
-	CustomEventName         *string          `json:"custom_event_name" camel:"customEventName"`
-	DevFeePaymentEvent      interface{}      `json:"dev_fee_payment_event" camel:"devFeePaymentEvent"`
-	DevSellerFeeBasisPoints int              `json:"dev_seller_fee_basis_points" camel:"devSellerFeeBasisPoints"`
-	Duration                *int32           `json:"duration,string" camel:"duration,string"`
-	EndingPrice             *decimal.Decimal `json:"ending_price" camel:"endingPrice"`
+	CreatedDate             string           `opensea:"created_date" json:"createdDate"`
+	CustomEventName         *string          `opensea:"custom_event_name" json:"customEventName"`
+	DevFeePaymentEvent      interface{}      `opensea:"dev_fee_payment_event" json:"devFeePaymentEvent"`
+	DevSellerFeeBasisPoints int              `opensea:"dev_seller_fee_basis_points" json:"devSellerFeeBasisPoints"`
+	Duration                *int32           `opensea:"duration,string" json:"duration,string"`
+	EndingPrice             *decimal.Decimal `opensea:"ending_price" json:"endingPrice"`
 	// Describes the event type
-	EventType EventType `json:"event_type" camel:"eventType"`
+	EventType EventType `opensea:"event_type" json:"eventType"`
 	// The accounts associated with this event.
-	FromAccount *Account `json:"from_account" camel:"fromAccount"`
+	FromAccount *Account `opensea:"from_account" json:"fromAccount"`
 	// Ditto
-	ToAccount *Account `json:"to_account" camel:"toAccount"`
-	ID        int64    `json:"id" camel:"id"`
+	ToAccount *Account `opensea:"to_account" json:"toAccount"`
+	ID        int64    `opensea:"id" json:"id"`
 	// A boolean value that is true if the sale event was a private sale
-	IsPrivate    *bool    `json:"is_private" camel:"isPrivate"`
-	OwnerAccount *Account `json:"owner_account" camel:"ownerAccount"`
+	IsPrivate    *bool    `opensea:"is_private" json:"isPrivate"`
+	OwnerAccount *Account `opensea:"owner_account" json:"ownerAccount"`
 	// The payment asset used in this transaction, such as ETH, WETH or DAI
-	PaymentToken *PaymentToken `json:"payment_token" camel:"paymentToken"`
+	PaymentToken *PaymentToken `opensea:"payment_token" json:"paymentToken"`
 	// The amount of the item that was sold. Applicable for semi-fungible assets
-	Quantity      string           `json:"quantity" camel:"quantity"`
-	Seller        *Account         `json:"seller" camel:"seller"`
-	StartingPrice *decimal.Decimal `json:"starting_price" camel:"startingPrice"`
+	Quantity      string           `opensea:"quantity" json:"quantity"`
+	Seller        *Account         `opensea:"seller" json:"seller"`
+	StartingPrice *decimal.Decimal `opensea:"starting_price" json:"startingPrice"`
 	// The total price that the asset was bought for. This includes any royalties that might have been collected
-	TotalPrice    interface{} `json:"total_price" camel:"totalPrice"`
-	Transaction   interface{} `json:"transaction" camel:"transaction"`
-	WinnerAccount interface{} `json:"winner_account" camel:"winnerAccount"`
+	TotalPrice    interface{} `opensea:"total_price" json:"totalPrice"`
+	Transaction   interface{} `opensea:"transaction" json:"transaction"`
+	WinnerAccount interface{} `opensea:"winner_account" json:"winnerAccount"`
 	// eg: 2017-07-21T17:32:28Z
-	ListingTime *string `json:"listing_time" camel:"listingTime"`
+	ListingTime *string `opensea:"listing_time" json:"listingTime"`
 }
