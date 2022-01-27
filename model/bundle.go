@@ -30,41 +30,41 @@ type SellOrder struct {
 			Description string          `opensea:"description" json:"description"`
 		} `opensea:"bundle" json:"bundle"`
 	} `opensea:"metadata" json:"metadata"`
-	Exchange             string                `opensea:"exchange" json:"exchange"`
-	Maker                *BundleAccount        `opensea:"maker" json:"maker"`
-	Taker                *BundleAccount        `opensea:"taker" json:"taker"`
-	CurrentPrice         string                `opensea:"current_price" json:"currentPrice"`
-	CurrentBounty        string                `opensea:"current_bounty" json:"currentBounty"`
-	BountyMultiple       string                `opensea:"bounty_multiple" json:"bountyMultiple"`
-	MakerRelayerFee      string                `opensea:"maker_relayer_fee" json:"makerRelayerFee"`
-	TakerRelayerFee      string                `opensea:"taker_relayer_fee" json:"takerRelayerFee"`
-	MakerProtocolFee     string                `opensea:"maker_protocol_fee" json:"makerProtocolFee"`
-	TakerProtocolFee     string                `opensea:"taker_protocol_fee" json:"takerProtocolFee"`
-	MakerReferrerFee     string                `opensea:"maker_referrer_fee" json:"makerReferrerFee"`
-	FeeRecipient         *BundleAccount        `opensea:"fee_recipient" json:"feeRecipient"`
-	FeeMethod            int                   `opensea:"fee_method" json:"feeMethod"`
-	Side                 int                   `opensea:"side" json:"side"`
-	SaleKind             int                   `opensea:"sale_kind" json:"saleKind"`
-	Target               string                `opensea:"target" json:"target"`
-	HowToCall            int                   `opensea:"how_to_call" json:"howToCall"`
-	Calldata             string                `opensea:"calldata" json:"calldata"`
-	ReplacementPattern   string                `opensea:"replacement_pattern" json:"replacementPattern"`
-	StaticTarget         string                `opensea:"static_target" json:"staticTarget"`
-	StaticExtradata      string                `opensea:"static_extradata" json:"staticExtradata"`
-	PaymentToken         string                `opensea:"payment_token" json:"paymentToken"`
-	PaymentTokenContract *PaymentTokenContract `opensea:"payment_token_contract" json:"paymentTokenContract"`
-	BasePrice            string                `opensea:"base_price" json:"basePrice"`
-	Extra                string                `opensea:"extra" json:"extra"`
-	Quantity             string                `opensea:"quantity" json:"quantity"`
-	Salt                 string                `opensea:"salt" json:"salt"`
-	V                    int                   `opensea:"v" json:"v"`
-	R                    string                `opensea:"r" json:"r"`
-	S                    string                `opensea:"s" json:"s"`
-	ApprovedOnChain      bool                  `opensea:"approved_on_chain" json:"approvedOnChain"`
-	Cancelled            bool                  `opensea:"cancelled" json:"cancelled"`
-	Finalized            bool                  `opensea:"finalized" json:"finalized"`
-	MarkedInvalid        bool                  `opensea:"marked_invalid" json:"markedInvalid"`
-	PrefixedHash         string                `opensea:"prefixed_hash" json:"prefixedHash"`
+	Exchange             string         `opensea:"exchange" json:"exchange"`
+	Maker                *BundleAccount `opensea:"maker" json:"maker"`
+	Taker                *BundleAccount `opensea:"taker" json:"taker"`
+	CurrentPrice         string         `opensea:"current_price" json:"currentPrice"`
+	CurrentBounty        string         `opensea:"current_bounty" json:"currentBounty"`
+	BountyMultiple       string         `opensea:"bounty_multiple" json:"bountyMultiple"`
+	MakerRelayerFee      string         `opensea:"maker_relayer_fee" json:"makerRelayerFee"`
+	TakerRelayerFee      string         `opensea:"taker_relayer_fee" json:"takerRelayerFee"`
+	MakerProtocolFee     string         `opensea:"maker_protocol_fee" json:"makerProtocolFee"`
+	TakerProtocolFee     string         `opensea:"taker_protocol_fee" json:"takerProtocolFee"`
+	MakerReferrerFee     string         `opensea:"maker_referrer_fee" json:"makerReferrerFee"`
+	FeeRecipient         *BundleAccount `opensea:"fee_recipient" json:"feeRecipient"`
+	FeeMethod            int            `opensea:"fee_method" json:"feeMethod"`
+	Side                 int            `opensea:"side" json:"side"`
+	SaleKind             int            `opensea:"sale_kind" json:"saleKind"`
+	Target               string         `opensea:"target" json:"target"`
+	HowToCall            int            `opensea:"how_to_call" json:"howToCall"`
+	Calldata             string         `opensea:"calldata" json:"calldata"`
+	ReplacementPattern   string         `opensea:"replacement_pattern" json:"replacementPattern"`
+	StaticTarget         string         `opensea:"static_target" json:"staticTarget"`
+	StaticExtradata      string         `opensea:"static_extradata" json:"staticExtradata"`
+	PaymentToken         string         `opensea:"payment_token" json:"paymentToken"`
+	PaymentTokenContract *PaymentToken  `opensea:"payment_token_contract" json:"paymentTokenContract"`
+	BasePrice            string         `opensea:"base_price" json:"basePrice"`
+	Extra                string         `opensea:"extra" json:"extra"`
+	Quantity             string         `opensea:"quantity" json:"quantity"`
+	Salt                 string         `opensea:"salt" json:"salt"`
+	V                    int            `opensea:"v" json:"v"`
+	R                    string         `opensea:"r" json:"r"`
+	S                    string         `opensea:"s" json:"s"`
+	ApprovedOnChain      bool           `opensea:"approved_on_chain" json:"approvedOnChain"`
+	Cancelled            bool           `opensea:"cancelled" json:"cancelled"`
+	Finalized            bool           `opensea:"finalized" json:"finalized"`
+	MarkedInvalid        bool           `opensea:"marked_invalid" json:"markedInvalid"`
+	PrefixedHash         string         `opensea:"prefixed_hash" json:"prefixedHash"`
 }
 
 type BundleAccount struct {

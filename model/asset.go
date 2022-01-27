@@ -40,8 +40,8 @@ type Asset struct {
 	TopBid                  interface{}     `opensea:"top_bid" json:"topBid"`
 	ListingDate             *string         `opensea:"listing_date" json:"listingDate"`
 	IsPresale               bool            `opensea:"is_presale" json:"isPresale"`
-	TransferFeePaymentToken interface{}     `opensea:"transfer_fee_payment_token" json:"transferFeePaymentToken"`
-	TransferFee             interface{}     `opensea:"transfer_fee" json:"transferFee"`
+	TransferFeePaymentToken *PaymentToken   `opensea:"transfer_fee_payment_token" json:"transferFeePaymentToken"`
+	TransferFee             *string         `opensea:"transfer_fee" json:"transferFee"`
 	RelatedAssets           []*Asset        `opensea:"related_assets" json:"relatedAssets"`
 	Orders                  []*Order        `opensea:"orders" json:"orders"`
 	Auctions                []interface{}   `opensea:"auctions" json:"auctions"`
