@@ -10,19 +10,19 @@ type Asset struct {
 	TokenID  string `json:"token_id" camel:"tokenID"`
 	NumSales int    `json:"num_sales" camel:"numSales"`
 	// The background color to be displayed with the item
-	BackgroundColor interface{} `json:"background_color" camel:"backgroundColor"`
+	BackgroundColor *string `json:"background_color" camel:"backgroundColor"`
 	// An image for the item. Note that this is the cached URL we store on our end. The original image url is image_original_url
-	ImageURL             string      `json:"image_url" camel:"imageURL"`
-	ImagePreviewURL      string      `json:"image_preview_url" camel:"imagePreviewURL"`
-	ImageThumbnailURL    string      `json:"image_thumbnail_url" camel:"imageThumbnailURL"`
-	ImageOriginalURL     string      `json:"image_original_url" camel:"imageOriginalURL"`
-	AnimationURL         interface{} `json:"animation_url" camel:"animationURL"`
-	AnimationOriginalURL interface{} `json:"animation_original_url" camel:"animationOriginalURL"`
+	ImageURL             string  `json:"image_url" camel:"imageURL"`
+	ImagePreviewURL      string  `json:"image_preview_url" camel:"imagePreviewURL"`
+	ImageThumbnailURL    string  `json:"image_thumbnail_url" camel:"imageThumbnailURL"`
+	ImageOriginalURL     string  `json:"image_original_url" camel:"imageOriginalURL"`
+	AnimationURL         *string `json:"animation_url" camel:"animationURL"`
+	AnimationOriginalURL *string `json:"animation_original_url" camel:"animationOriginalURL"`
 	// Name of the item
-	Name        string      `json:"name" camel:"name"`
-	Description interface{} `json:"description" camel:"description"`
+	Name        string  `json:"name" camel:"name"`
+	Description *string `json:"description" camel:"description"`
 	// External link to the original website for the item
-	ExternalLink interface{} `json:"external_link" camel:"externalLink"`
+	ExternalLink *string `json:"external_link" camel:"externalLink"`
 	// Dictionary of data on the contract itself (see asset contract section)
 	AssetContract *Contract   `json:"asset_contract" camel:"assetContract"`
 	Permalink     string      `json:"permalink" camel:"permalink"`
@@ -30,19 +30,19 @@ type Asset struct {
 	Decimals      int         `json:"decimals" camel:"decimals"`
 	TokenMetadata string      `json:"token_metadata" camel:"tokenMetadata"`
 	// Dictionary of data on the owner (see account section)
-	Owner      *Account    `json:"owner" camel:"owner"`
-	SellOrders interface{} `json:"sell_orders" camel:"sellOrders"`
-	Creator    *Account    `json:"creator" camel:"creator"`
+	Owner      *Account     `json:"owner" camel:"owner"`
+	SellOrders []*SellOrder `json:"sell_orders,omitempty" camel:"sellOrders,omitempty"`
+	Creator    *Account     `json:"creator" camel:"creator"`
 	// A list of traits associated with the item (see traits section)
 	Traits []*Trait `json:"traits" camel:"traits"`
 	// When this item was last sold (null if there was no last sale)
 	LastSale                *LastSale       `json:"last_sale" camel:"lastSale"`
 	TopBid                  interface{}     `json:"top_bid" camel:"topBid"`
-	ListingDate             interface{}     `json:"listing_date" camel:"listingDate"`
+	ListingDate             *string         `json:"listing_date" camel:"listingDate"`
 	IsPresale               bool            `json:"is_presale" camel:"isPresale"`
 	TransferFeePaymentToken interface{}     `json:"transfer_fee_payment_token" camel:"transferFeePaymentToken"`
 	TransferFee             interface{}     `json:"transfer_fee" camel:"transferFee"`
-	RelatedAssets           []interface{}   `json:"related_assets" camel:"relatedAssets"`
+	RelatedAssets           []*Asset        `json:"related_assets" camel:"relatedAssets"`
 	Orders                  []*Order        `json:"orders" camel:"orders"`
 	Auctions                []interface{}   `json:"auctions" camel:"auctions"`
 	SupportsWyvern          bool            `json:"supports_wyvern" camel:"supportsWyvern"`
@@ -67,10 +67,10 @@ type LastSale struct {
 		TokenID  string `json:"token_id" camel:"tokenID"`
 		Decimals int    `json:"decimals" camel:"decimals"`
 	} `json:"asset" camel:"asset"`
-	AssetBundle    interface{}   `json:"asset_bundle" camel:"assetBundle"`
+	AssetBundle    *Bundle       `json:"asset_bundle" camel:"assetBundle"`
 	EventType      string        `json:"event_type" camel:"eventType"`
 	EventTimestamp string        `json:"event_timestamp" camel:"eventTimestamp"`
-	AuctionType    interface{}   `json:"auction_type" camel:"auctionType"`
+	AuctionType    *AuctionType  `json:"auction_type" camel:"auctionType"`
 	TotalPrice     string        `json:"total_price" camel:"totalPrice"`
 	PaymentToken   *PaymentToken `json:"payment_token" camel:"paymentToken"`
 	Transaction    *Transaction  `json:"transaction" camel:"transaction"`
