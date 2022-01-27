@@ -4,9 +4,19 @@ import (
 	"errors"
 	"github.com/json-iterator/go"
 	"github.com/pinealctx/restgo"
+	"net/http"
 )
 
+var ErrNotFound = errors.New("resource.not.found")
+
 func WrapperRspError(rsp restgo.IResponse) error {
+	var r = rsp.GetResponse()
+	if r.StatusCode != http.StatusOK {
+		switch r.StatusCode {
+		case http.StatusNotFound:
+			return ErrNotFound
+		}
+	}
 	var ret, err = rsp.Data()
 	if err != nil {
 		return err
@@ -20,7 +30,7 @@ func ParseRsp(rsp restgo.IResponse, i interface{}) error {
 		return err
 	}
 
-	var njson = jsoniter.Config{
+	var nJson = jsoniter.Config{
 		MarshalFloatWith6Digits: false,
 		EscapeHTML:              true,
 		SortMapKeys:             true,
@@ -30,5 +40,5 @@ func ParseRsp(rsp restgo.IResponse, i interface{}) error {
 		ValidateJsonRawMessage:  true,
 	}.Froze()
 
-	return njson.Unmarshal(data, i)
+	return nJson.Unmarshal(data, i)
 }

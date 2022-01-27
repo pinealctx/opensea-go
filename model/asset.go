@@ -63,10 +63,7 @@ type Transaction struct {
 }
 
 type LastSale struct {
-	Asset struct {
-		TokenID  string `opensea:"token_id" json:"tokenID"`
-		Decimals int    `opensea:"decimals" json:"decimals"`
-	} `opensea:"asset" json:"asset"`
+	Asset          *AssetToken   `opensea:"asset" json:"asset"`
 	AssetBundle    *Bundle       `opensea:"asset_bundle" json:"assetBundle"`
 	EventType      string        `opensea:"event_type" json:"eventType"`
 	EventTimestamp string        `opensea:"event_timestamp" json:"eventTimestamp"`
@@ -86,4 +83,9 @@ type TopOwnership struct {
 type AssetAddress struct {
 	ID      string `opensea:"id" json:"id"`
 	Address string `opensea:"address" json:"address"`
+}
+
+type AssetToken struct {
+	TokenID  string `opensea:"token_id" json:"tokenID"`
+	Decimals int    `opensea:"decimals" json:"decimals"`
 }
