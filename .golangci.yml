@@ -103,9 +103,6 @@ linters-settings:
     simple: true
     range-loops: true
     for-loops: false
-  predeclared:
-    ignore: ""
-    q: false
   nolintlint:
     allow-leading-space: true
     require-explanation: true
@@ -179,7 +176,6 @@ linters:
     - lll
     - nestif
     - prealloc
-    - predeclared
     - exportloopref
     - unparam
     - megacheck
