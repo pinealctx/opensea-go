@@ -2,6 +2,8 @@
 
 Golang's library for OpenSea APIs (https://docs.opensea.io/reference).
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/pinealctx/opensea-go.svg)](https://pkg.go.dev/github.com/pinealctx/opensea-go)
+
 ## Get Started
 
 #### Get it
