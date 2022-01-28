@@ -1,0 +1,207 @@
+run:
+  concurrency: 4
+  timeout: 10m
+  issues-exit-code: 1
+  tests: false
+  skip-dirs:
+    - tools
+  skip-dirs-use-default: true
+  allow-parallel-runners: false
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+  uniq-by-line: true
+  sort-results: true
+
+linters-settings:
+  dogsled:
+    max-blank-identifiers: 2
+  dupl:
+    threshold: 150
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+  exhaustive:
+    check-generated: false
+    default-signifies-exhaustive: true
+  funlen:
+    lines: 120
+    statements: 60
+  gocognit:
+    min-complexity: 20
+  nestif:
+    min-complexity: 4
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  gocritic:
+    disabled-checks:
+      - commentFormatting
+      - ifElseChain
+  gocyclo:
+    min-complexity: 20
+  godot:
+    scope: declarations
+    capital: false
+  godox:
+    keywords:
+      - NOTE
+      - OPTIMIZE
+      - HACK
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: github.com/org/project
+  golint:
+    min-confidence: 0.8
+  gomnd:
+    settings:
+      mnd:
+        checks:
+          - argument
+          - case
+          - condition
+          - return
+        ignored-numbers: 0,1
+  gomodguard:
+    blocked:
+      local_replace_directives: false
+  govet:
+    check-shadowing: true
+    fieldalignment: true
+    settings:
+      printf:
+        funcs:
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
+
+    enable:
+      - atomicalign
+    enable-all: false
+    disable:
+      - shadow
+    disable-all: false
+  depguard:
+    list-type: blacklist
+    include-go-root: false
+    packages:
+      - github.com/sirupsen/logrus
+    packages-with-error-message:
+      - github.com/sirupsen/logrus: "logging is allowed only by logutils.Log"
+  lll:
+    line-length: 600
+    tab-width: 1
+  misspell:
+    locale: US
+  nakedret:
+    max-func-lines: 30
+  prealloc:
+    simple: true
+    range-loops: true
+    for-loops: false
+  nolintlint:
+    allow-leading-space: true
+    require-explanation: true
+    require-specific: true
+  rowserrcheck:
+    packages:
+      - github.com/jmoiron/sqlx
+  testpackage:
+    skip-regexp: (export|internal)_test\.go
+  thelper:
+    test:
+      first: true
+      name: true
+      begin: true
+    benchmark:
+      first: true
+      name: true
+      begin: true
+  unparam:
+    check-exported: false
+  unused:
+    check-exported: false
+  whitespace:
+    multi-if: false
+    multi-func: false
+  wsl:
+    strict-append: true
+    allow-assign-and-call: true
+    allow-multiline-assign: true
+    allow-cuddle-declarations: false
+    allow-trailing-comment: false
+    force-case-trailing-whitespace: 0
+    force-err-cuddling: false
+    allow-separated-leading-comment: false
+  gofumpt:
+    extra-rules: false
+  errorlint:
+    errorf: true
+  makezero:
+    always: false
+  forbidigo:
+    forbid:
+      - fmt.Errorf
+      - fmt.Print.*
+      - ginkgo\\.F.*
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - structcheck
+    - stylecheck
+    - typecheck
+    - unused
+    - asciicheck
+    - bodyclose
+    - dupl
+    - exportloopref
+    - funlen
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godox
+    - gosec
+    - lll
+    - nestif
+    - prealloc
+    - exportloopref
+    - unparam
+    - megacheck
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+        - lll
+        - funlen
+    - linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+        - lll
+        - funlen
+      source: "^//go:generate "
+severity:
+  default-severity: error
+  case-sensitive: false
+  rules:
+    - linters:
+        - dupl
+      severity: info

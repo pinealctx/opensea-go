@@ -1,6 +1,6 @@
 package model
 
-type Side int32
+type Side uint8
 
 const (
 	SideBuy Side = iota
@@ -8,14 +8,28 @@ const (
 )
 
 // SaleKind the kind of sell order
-// NOTE: use only_english=true for filtering for only English Auctions
-type SaleKind int32
+// use only_english=true for filtering for only English Auctions
+type SaleKind uint8
 
 const (
 	// SaleKindFixedOrMinBidPrice fixed-price sales or min-bid auctions
 	SaleKindFixedOrMinBidPrice SaleKind = iota
 	// SaleKindDecliningPrice declining-price Dutch Auctions
 	SaleKindDecliningPrice
+)
+
+type HowToCall uint8
+
+const (
+	Call HowToCall = iota
+	DelegateCall
+)
+
+type FeeMethod uint8
+
+const (
+	ProtocolFee FeeMethod = iota
+	SplitFee
 )
 
 type Order struct {
@@ -42,7 +56,7 @@ type Order struct {
 	Side                 Side          `opensea:"side" json:"side"`
 	SaleKind             SaleKind      `opensea:"sale_kind" json:"saleKind"`
 	Target               string        `opensea:"target" json:"target"`
-	HowToCall            int           `opensea:"how_to_call" json:"howToCall"`
+	HowToCall            HowToCall     `opensea:"how_to_call" json:"howToCall"`
 	Calldata             string        `opensea:"calldata" json:"calldata"`
 	ReplacementPattern   string        `opensea:"replacement_pattern" json:"replacementPattern"`
 	StaticTarget         string        `opensea:"static_target" json:"staticTarget"`
