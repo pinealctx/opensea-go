@@ -67,9 +67,9 @@ type Event struct {
 	Seller        *Account         `opensea:"seller" json:"seller"`
 	StartingPrice *decimal.Decimal `opensea:"starting_price" json:"startingPrice"`
 	// The total price that the asset was bought for. This includes any royalties that might have been collected
-	TotalPrice    string       `opensea:"total_price" json:"totalPrice"`
-	Transaction   *Transaction `opensea:"transaction" json:"transaction"`
-	WinnerAccount interface{}  `opensea:"winner_account" json:"winnerAccount"`
+	TotalPrice    *decimal.Decimal `opensea:"total_price" json:"totalPrice"`
+	Transaction   *Transaction     `opensea:"transaction" json:"transaction"`
+	WinnerAccount *Account         `opensea:"winner_account" json:"winnerAccount"`
 	// eg: 2017-07-21T17:32:28Z
 	ListingTime *string `opensea:"listing_time" json:"listingTime"`
 }
