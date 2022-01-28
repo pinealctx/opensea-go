@@ -57,7 +57,7 @@ type OrderRequest struct {
 	// Filter by the kind of sell order.
 	// 0 for fixed-price sales or min-bid auctions,
 	// and 1 for declining-price Dutch Auctions.
-	// NOTE: use only_english=true for filtering for only English Auctions
+	// use only_english=true for filtering for only English Auctions
 	SaleKind model.SaleKind `query:"sale_kind"`
 	// Limit
 	Limit int32 `query:"limit,required"`
