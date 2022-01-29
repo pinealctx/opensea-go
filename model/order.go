@@ -54,7 +54,7 @@ type Order struct {
 	TakerProtocolFee     string           `opensea:"taker_protocol_fee" json:"takerProtocolFee"`
 	MakerReferrerFee     string           `opensea:"maker_referrer_fee" json:"makerReferrerFee"`
 	FeeRecipient         *Account         `opensea:"fee_recipient" json:"feeRecipient"`
-	FeeMethod            int              `opensea:"fee_method" json:"feeMethod"`
+	FeeMethod            FeeMethod        `opensea:"fee_method" json:"feeMethod"`
 	Side                 Side             `opensea:"side" json:"side"`
 	SaleKind             SaleKind         `opensea:"sale_kind" json:"saleKind"`
 	Target               string           `opensea:"target" json:"target"`
