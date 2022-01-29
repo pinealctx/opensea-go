@@ -83,6 +83,22 @@ type Order struct {
 	AssetBundle *Bundle `opensea:"asset_bundle" json:"assetBundle"`
 }
 
+func (o *Order) Hash() string {
+	if o == nil {
+		return ""
+	}
+
+	return o.OrderHash
+}
+
+func (o *Order) PreHash() string {
+	if o == nil {
+		return ""
+	}
+
+	return o.PrefixedHash
+}
+
 type Metadata struct {
 	Asset           *AssetAddress `opensea:"asset" json:"asset"`
 	Schema          string        `opensea:"schema" json:"schema"`

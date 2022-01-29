@@ -26,7 +26,7 @@ type Collection struct {
 	// The payment tokens accepted for this collection
 	PaymentTokens []*PaymentToken `opensea:"payment_tokens" json:"paymentTokens"`
 	// A list of the contracts that are associated with this collection
-	PrimaryAssetContracts []*PrimaryAssetContract `opensea:"primary_asset_contracts" json:"primaryAssetContracts"`
+	PrimaryAssetContracts []*Contract `opensea:"primary_asset_contracts" json:"primaryAssetContracts"`
 	// A dictionary listing all the trait types available within this collection
 	Traits map[string]map[string]int32 `opensea:"traits" json:"traits"`
 	// A dictionary containing some sales statistics related to this collection, including trade volume and floor prices
@@ -75,31 +75,6 @@ type PaymentToken struct {
 	Decimals int              `opensea:"decimals" json:"decimals"`
 	EthPrice *decimal.Decimal `opensea:"eth_price" json:"ethPrice"`
 	UsdPrice *decimal.Decimal `opensea:"usd_price" json:"usdPrice"`
-}
-
-type PrimaryAssetContract struct {
-	Address                     string  `opensea:"address" json:"address"`
-	AssetContractType           string  `opensea:"asset_contract_type" json:"assetContractType"`
-	CreatedDate                 string  `opensea:"created_date" json:"createdDate"`
-	Name                        string  `opensea:"name" json:"name"`
-	NftVersion                  string  `opensea:"nft_version" json:"nftVersion"`
-	OpenseaVersion              *string `opensea:"opensea_version" json:"openseaVersion"`
-	Owner                       int     `opensea:"owner" json:"owner"`
-	SchemaName                  string  `opensea:"schema_name" json:"schemaName"`
-	Symbol                      string  `opensea:"symbol" json:"symbol"`
-	TotalSupply                 string  `opensea:"total_supply" json:"totalSupply"`
-	Description                 string  `opensea:"description" json:"description"`
-	ExternalLink                string  `opensea:"external_link" json:"externalLink"`
-	ImageURL                    string  `opensea:"image_url" json:"imageURL"`
-	DefaultToFiat               bool    `opensea:"default_to_fiat" json:"defaultToFiat"`
-	DevBuyerFeeBasisPoints      int     `opensea:"dev_buyer_fee_basis_points" json:"devBuyerFeeBasisPoints"`
-	DevSellerFeeBasisPoints     int     `opensea:"dev_seller_fee_basis_points" json:"devSellerFeeBasisPoints"`
-	OnlyProxiedTransfers        bool    `opensea:"only_proxied_transfers" json:"onlyProxiedTransfers"`
-	OpenseaBuyerFeeBasisPoints  int     `opensea:"opensea_buyer_fee_basis_points" json:"openseaBuyerFeeBasisPoints"`
-	OpenseaSellerFeeBasisPoints int     `opensea:"opensea_seller_fee_basis_points" json:"openseaSellerFeeBasisPoints"`
-	BuyerFeeBasisPoints         int     `opensea:"buyer_fee_basis_points" json:"buyerFeeBasisPoints"`
-	SellerFeeBasisPoints        int     `opensea:"seller_fee_basis_points" json:"sellerFeeBasisPoints"`
-	PayoutAddress               string  `opensea:"payout_address" json:"payoutAddress"`
 }
 
 type CollectionStats struct {

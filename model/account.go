@@ -10,3 +10,11 @@ type Account struct {
 	Address       string `opensea:"address" json:"address"`
 	Config        string `opensea:"config" json:"config"`
 }
+
+func (a *Account) AccountAddress() string {
+	if a == nil {
+		return ""
+	}
+
+	return a.Address
+}

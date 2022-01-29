@@ -44,3 +44,11 @@ type Contract struct {
 	PayoutAddress               string      `opensea:"payout_address" json:"payoutAddress"`
 	Collection                  *Collection `opensea:"collection,omitempty" json:"collection"`
 }
+
+func (c *Contract) ContractAddress() string {
+	if c == nil {
+		return ""
+	}
+
+	return c.Address
+}

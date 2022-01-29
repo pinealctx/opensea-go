@@ -15,6 +15,14 @@ type Bundle struct {
 	SellOrders    []*SellOrder `opensea:"sell_orders" json:"sellOrders"`
 }
 
+func (b *Bundle) BundleSlug() string {
+	if b == nil {
+		return ""
+	}
+
+	return b.Slug
+}
+
 type SellOrder struct {
 	Order
 	Metadata     *SellOrderMetadata `opensea:"metadata" json:"metadata"`
