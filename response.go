@@ -7,29 +7,13 @@ import (
 	"net/http"
 )
 
-var ErrNotFound = errors.New("resource.not.found")
+var (
+	ErrNotFound        = errors.New("resource.not.found")
+	ErrTooManyRequests = errors.New("too.many.requests")
+)
 
-func WrapperRspError(rsp restgo.IResponse) error {
-	switch rsp.StatusCode() {
-	case http.StatusNotFound:
-		return ErrNotFound
-	default:
-	}
-
-	var ret, err = rsp.Data()
-	if err != nil {
-		return err
-	}
-	return errors.New(string(ret))
-}
-
-func ParseRsp(rsp restgo.IResponse, i interface{}) error {
-	var data, err = rsp.Data()
-	if err != nil {
-		return err
-	}
-
-	var n = jsoniter.Config{
+var (
+	jConfig = jsoniter.Config{
 		MarshalFloatWith6Digits: false,
 		EscapeHTML:              true,
 		SortMapKeys:             true,
@@ -38,6 +22,20 @@ func ParseRsp(rsp restgo.IResponse, i interface{}) error {
 		OnlyTaggedField:         false,
 		ValidateJsonRawMessage:  true,
 	}.Froze()
+)
 
-	return n.Unmarshal(data, i)
+func ParseRsp(rsp restgo.IResponse, i interface{}) error {
+	switch rsp.StatusCode() {
+	case http.StatusNotFound:
+		return ErrNotFound
+	case http.StatusTooManyRequests:
+		return ErrTooManyRequests
+	}
+
+	var data, err = rsp.Data()
+	if err != nil {
+		return err
+	}
+
+	return jConfig.Unmarshal(data, i)
 }

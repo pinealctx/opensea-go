@@ -16,7 +16,7 @@ func (c *Client) Events(ctx context.Context, req *EventsRequest) ([]*model.Event
 	var response EventsResponse
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return response.AssetEvents, nil
 }

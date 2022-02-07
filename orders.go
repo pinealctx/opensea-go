@@ -15,7 +15,7 @@ func (c *Client) Orders(ctx context.Context, req *OrderRequest) (*OrderResponse,
 	var response OrderResponse
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return &response, nil
 }

@@ -17,7 +17,7 @@ func (c *Client) Bundles(ctx context.Context, req *BundlesRequest) ([]*model.Bun
 	var response BundlesResponse
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return response.Bundles, nil
 }

@@ -16,7 +16,7 @@ func (c *Client) Collection(ctx context.Context, req *CollectionRequest) (*model
 	var response CollectionResponse
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return response.Collection, nil
 }

@@ -15,7 +15,7 @@ func (c *Client) Asset(ctx context.Context, req *AssetRequest) (*model.Asset, er
 	var response model.Asset
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return &response, nil
 }

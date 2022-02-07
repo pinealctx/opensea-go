@@ -15,7 +15,7 @@ func (c *Client) Contract(ctx context.Context, req *ContractRequest) (*model.Con
 	var response model.Contract
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return &response, nil
 }

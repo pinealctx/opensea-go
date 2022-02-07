@@ -15,7 +15,7 @@ func (c *Client) Collections(ctx context.Context, req *CollectionsRequest) ([]*m
 	var response CollectionsResponse
 	err = ParseRsp(rsp, &response)
 	if err != nil {
-		return nil, WrapperRspError(rsp)
+		return nil, err
 	}
 	return response.Collections, nil
 }
