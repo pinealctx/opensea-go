@@ -8,7 +8,7 @@ import (
 
 // Collections Use this endpoint to fetch collections on OpenSea
 func (c *Client) Collections(ctx context.Context, req *CollectionsRequest) ([]*model.Collection, error) {
-	var rsp, err = c.Get(ctx, "/api/v1/collections", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/api/v1/collections", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

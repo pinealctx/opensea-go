@@ -9,7 +9,7 @@ import (
 // Collection Used for retrieving more in-depth information about individual collections,
 // including real time statistics like floor price
 func (c *Client) Collection(ctx context.Context, req *CollectionRequest) (*model.Collection, error) {
-	var rsp, err = c.Get(ctx, "/api/v1/collection/:collection_slug", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/api/v1/collection/:collection_slug", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

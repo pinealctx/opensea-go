@@ -8,7 +8,7 @@ import (
 
 // Orders How to fetch orders from the OpenSea system
 func (c *Client) Orders(ctx context.Context, req *OrderRequest) (*OrderResponse, error) {
-	var rsp, err = c.Get(ctx, "/wyvern/v1/orders", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/wyvern/v1/orders", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

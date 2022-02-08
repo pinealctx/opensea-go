@@ -28,7 +28,7 @@ type Collection struct {
 	// A list of the contracts that are associated with this collection
 	PrimaryAssetContracts []*Contract `opensea:"primary_asset_contracts" json:"primaryAssetContracts"`
 	// A dictionary listing all the trait types available within this collection
-	Traits map[string]map[string]int32 `opensea:"traits" json:"traits"`
+	Traits map[string]map[string]float64 `opensea:"traits" json:"traits"`
 	// A dictionary containing some sales statistics related to this collection, including trade volume and floor prices
 	Stats *CollectionStats `opensea:"stats" json:"stats"`
 	// Image used in the horizontal top banner for the collection.

@@ -8,7 +8,7 @@ import (
 
 // Assets To retrieve assets from our API, call the /assets endpoint with the desired filter parameters.
 func (c *Client) Assets(ctx context.Context, req *AssetsRequest) ([]*model.Asset, error) {
-	var rsp, err = c.Get(ctx, "/api/v1/assets", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/api/v1/assets", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

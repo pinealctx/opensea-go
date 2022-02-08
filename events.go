@@ -9,7 +9,7 @@ import (
 // Events The /events endpoint provides a list of events that occur on the assets that OpenSea tracks.
 // The "event_type" field indicates what type of event it is (transfer, successful auction, etc).
 func (c *Client) Events(ctx context.Context, req *EventsRequest) ([]*model.Event, error) {
-	var rsp, err = c.Get(ctx, "/api/v1/events", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/api/v1/events", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

@@ -8,7 +8,7 @@ import (
 
 // Asset Used to fetch more in-depth information about an individual asset
 func (c *Client) Asset(ctx context.Context, req *AssetRequest) (*model.Asset, error) {
-	var rsp, err = c.Get(ctx, "/api/v1/asset/:asset_contract_address/:token_id", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/api/v1/asset/:asset_contract_address/:token_id", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

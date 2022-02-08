@@ -10,7 +10,7 @@ import (
 // You can buy them all at once in one transaction, and you can create them without any transactions or gas,
 // as long as you've already approved the assets inside.
 func (c *Client) Bundles(ctx context.Context, req *BundlesRequest) ([]*model.Bundle, error) {
-	var rsp, err = c.Get(ctx, "/api/v1/bundles", restgo.ObjectParams(req)...)
+	var rsp, err = c.get(ctx, "/api/v1/bundles", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
 	}

@@ -7,5 +7,5 @@ var (
 )
 
 func newClient() *Client {
-	return New(WithTestNet())
+	return New(WithTestNets(true))
 }
