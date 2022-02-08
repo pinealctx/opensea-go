@@ -66,6 +66,14 @@ type Collection struct {
 	WikiURL     *string `opensea:"wiki_url" json:"wikiURL"`
 }
 
+func (c *Collection) CollectionSlug() string {
+	if c == nil {
+		return ""
+	}
+
+	return c.Slug
+}
+
 type PaymentToken struct {
 	ID       int              `opensea:"id" json:"id"`
 	Symbol   string           `opensea:"symbol" json:"symbol"`
