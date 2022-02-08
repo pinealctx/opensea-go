@@ -1,5 +1,7 @@
 package model
 
+import "github.com/shopspring/decimal"
+
 type TraitDisplayType string
 
 const (
@@ -19,7 +21,7 @@ type Trait struct {
 	// How this trait will be displayed (options are number, boost_percentage, boost_number, and date).
 	// See the adding metadata section for more details
 	DisplayType *TraitDisplayType `opensea:"display_type" json:"displayType"`
-	MaxValue    *int32            `opensea:"max_value" json:"maxValue"`
+	MaxValue    *decimal.Decimal  `opensea:"max_value" json:"maxValue"`
 	TraitCount  int32             `opensea:"trait_count" json:"traitCount"`
 	Order       interface{}       `opensea:"order" json:"order"`
 }
