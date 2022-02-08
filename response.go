@@ -2,6 +2,7 @@ package opensea
 
 import (
 	"errors"
+	"fmt"
 	"github.com/json-iterator/go"
 	"github.com/pinealctx/restgo"
 	"net/http"
@@ -10,6 +11,7 @@ import (
 var (
 	ErrNotFound        = errors.New("resource.not.found")
 	ErrTooManyRequests = errors.New("too.many.requests")
+	ErrBadRequest      = errors.New("bad.request")
 )
 
 var (
@@ -25,17 +27,21 @@ var (
 )
 
 func ParseRsp(rsp restgo.IResponse, i interface{}) error {
-	switch rsp.StatusCode() {
+	var statusCode = rsp.StatusCode()
+	switch statusCode {
 	case http.StatusNotFound:
 		return ErrNotFound
 	case http.StatusTooManyRequests:
 		return ErrTooManyRequests
+	case http.StatusBadRequest:
+		return ErrBadRequest
+	case http.StatusOK:
+		var data, err = rsp.Data()
+		if err != nil {
+			return err
+		}
+		return jConfig.Unmarshal(data, i)
+	default:
+		return fmt.Errorf("unknown.http.status.code: %d", statusCode)
 	}
-
-	var data, err = rsp.Data()
-	if err != nil {
-		return err
-	}
-
-	return jConfig.Unmarshal(data, i)
 }
