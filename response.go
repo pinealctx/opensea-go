@@ -35,7 +35,7 @@ func ParseRsp(rsp restgo.IResponse, i interface{}) error {
 			return err
 		}
 		return jConfig.Unmarshal(data, i)
-	case http.StatusBadRequest:
+	case http.StatusBadRequest, http.StatusNotAcceptable:
 		var data, err = rsp.Data()
 		if err != nil {
 			return err
