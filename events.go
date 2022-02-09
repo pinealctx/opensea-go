@@ -29,7 +29,7 @@ type EventsRequest struct {
 	// For more information on collections, see our collections documentation.
 	CollectionSlug string `query:"collection_slug"`
 	// The token's id to optionally filter by
-	TokenID int32 `query:"token_id"`
+	TokenID string `query:"token_id"`
 	// A user account's wallet address to filter for events on an account
 	AccountAddress string `query:"account_address"`
 	// The event type to filter.
