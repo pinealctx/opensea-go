@@ -5,7 +5,7 @@ import "github.com/shopspring/decimal"
 type TraitDisplayType string
 
 const (
-	TraitDTNumber          TraitDisplayType = "string"
+	TraitDTNumber          TraitDisplayType = "number"
 	TraitDTBoostPercentage TraitDisplayType = "boost_percentage"
 	TraitDTBoostNumber     TraitDisplayType = "boost_number"
 	TraitDTDate            TraitDisplayType = "date"
