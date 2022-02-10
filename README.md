@@ -27,7 +27,7 @@ import (
 )
 
 func main() {
-	var cli = opensea.New(opensea.WithTestNet())
+	var cli = opensea.New(opensea.WithTestNets(true))
 	var asset, err = cli.Asset(context.Background(), &opensea.AssetRequest{
 		AssetContractAddress: "0x66583bd73a27c9245b723ff6a58f872234c3a50a",
 		TokenID:              "3",
