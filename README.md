@@ -2,7 +2,7 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/pinealctx/opensea-go.svg)](https://pkg.go.dev/github.com/pinealctx/opensea-go)
 [![codecov](https://codecov.io/gh/pinealctx/opensea-go/branch/main/graph/badge.svg?token=36396OPMPT)](https://codecov.io/gh/pinealctx/opensea-go)
-[![golangci-lint](https://github.com/pinealctx/opensea-go/actions/workflows/golangci-lint.yml/badge.svg?branch=main)](https://github.com/pinealctx/opensea-go/actions/workflows/golangci-lint.yml)
+[![golangci-lint](https://github.com/pinealctx/opensea-go/actions/workflows/ci.yml/badge.svg)](https://github.com/pinealctx/opensea-go/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/pinealctx/opensea-go)](https://goreportcard.com/report/github.com/pinealctx/opensea-go)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
