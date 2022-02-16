@@ -31,6 +31,8 @@ type OrderRequest struct {
 	// Filter by the order taker's wallet address.
 	// Orders open for any taker have the null address as their taker.
 	Taker string `query:"taker"`
+	// Filter by the asset owner's wallet address
+	Owner string `query:"owner"`
 	// When "true", only show English Auction sell orders,
 	// which wait for the highest bidder. When "false", exclude those.
 	IsEnglish bool `query:"is_english"`
