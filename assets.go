@@ -2,6 +2,7 @@ package opensea
 
 import (
 	"context"
+
 	"github.com/pinealctx/opensea-go/model"
 	"github.com/pinealctx/restgo"
 )
@@ -39,16 +40,34 @@ type AssetsRequest struct {
 	// Can be asc for ascending or desc for descending
 	OrderDirection string `query:"order_direction,required"`
 	// Offset
-	Offset int32 `query:"offset,required"`
+	Offset int32 `query:"offset"`
 	// Limit
 	Limit int32 `query:"limit,required"`
+
+	//Cursor A cursor pointing to the page to retrieve
+	Cursor int32 `query:"cursor"`
+
 	// Limit responses to members of a collection.
 	// Case-sensitive and must match the collection slug exactly.
 	// Will return all assets from all contracts in a collection.
 	// For more information on collections, see our collections documentation.
 	Collection string `query:"collection"`
+
+	// Limit responses to members of a collection.
+	// Case sensitive and must match the collection slug exactly.
+	// Will return all assets from all contracts in a collection.
+	// For more information on collections,
+	CollectionSlug string `query:"collection_slug"`
+
+	// CollectionEditor
+	CollectionEditor string `query:"collection_editor"`
+
+	// A flag determining if order information should be included in the response.
+	IncludeOrders bool `query:"include_orders"`
 }
 
 type AssetsResponse struct {
-	Assets []*model.Asset `opensea:"assets"`
+	Assets   []*model.Asset `opensea:"assets"`
+	Next     string         `opensea:"next"`
+	Previous string         `opensea:"previous"`
 }
