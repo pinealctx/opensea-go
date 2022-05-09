@@ -8,7 +8,7 @@ import (
 )
 
 // Assets To retrieve assets from our API, call the /assets endpoint with the desired filter parameters.
-func (c *Client) Assets(ctx context.Context, req *AssetsRequest) ([]*model.Asset, error) {
+func (c *Client) Assets(ctx context.Context, req *AssetsRequest) (*AssetsResponse, error) {
 	var rsp, err = c.get(ctx, "/api/v1/assets", restgo.ObjectParams(req)...)
 	if err != nil {
 		return nil, err
@@ -18,7 +18,7 @@ func (c *Client) Assets(ctx context.Context, req *AssetsRequest) ([]*model.Asset
 	if err != nil {
 		return nil, err
 	}
-	return response.Assets, nil
+	return &response, nil
 }
 
 type AssetsRequest struct {
@@ -45,7 +45,7 @@ type AssetsRequest struct {
 	Limit int32 `query:"limit,required"`
 
 	//Cursor A cursor pointing to the page to retrieve
-	Cursor int32 `query:"cursor"`
+	Cursor string `query:"cursor"`
 
 	// Limit responses to members of a collection.
 	// Case-sensitive and must match the collection slug exactly.
