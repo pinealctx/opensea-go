@@ -55,7 +55,7 @@ type OrderRequest struct {
 	TokenIDs []string `query:"token_ids"`
 	// Filter by the side of the order.
 	// 0 for buy orders and 1 for sale orders.
-	Side model.Side `query:"side"`
+	Side model.Side `query:"side,required"`
 	// Filter by the kind of sell order.
 	// 0 for fixed-price sales or min-bid auctions,
 	// and 1 for declining-price Dutch Auctions.
