@@ -40,3 +40,7 @@ func main() {
 	log.Println(asset)
 }
 ```
+
+## Special thanks
+
+* [JetBrains](https://www.jetbrains.com/buy/opensource/) for providing us with **All Products Pack** licenses.
