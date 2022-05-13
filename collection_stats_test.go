@@ -5,7 +5,7 @@ import "testing"
 func TestClient_CollectionStats(t *testing.T) {
 	var cli = newClient()
 	var collection, err = cli.CollectionStats(ctx, &CollectionRequest{
-		CollectionSlug: "solecial-nxxpltxldu",
+		CollectionSlug: "azuki",
 	})
 	if err != nil {
 		t.Error(err)

@@ -13,6 +13,7 @@ const (
 var defaultOption = &option{baseURL: hostProd}
 
 type option struct {
+	test               bool
 	baseURL            string
 	apiKey             string
 	retryWhenFreqLimit bool
@@ -24,6 +25,7 @@ type OptionFn func(*option)
 
 func WithTestNets(test bool) OptionFn {
 	return func(o *option) {
+		o.test = test
 		if test {
 			o.baseURL = hostTest
 		} else {

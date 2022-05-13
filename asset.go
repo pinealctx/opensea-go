@@ -31,4 +31,7 @@ type AssetRequest struct {
 	// included in the standard response, which provides the number of tokens owned by each of
 	// the 10 addresses with the greatest supply of the token.
 	AccountAddress string `query:"account_address"`
+	// A flag determining if order information should be included in the response.
+	// The default value of this flag is false.
+	IncludeOrders bool `query:"include_orders"`
 }

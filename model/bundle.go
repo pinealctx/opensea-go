@@ -26,12 +26,12 @@ func (b *Bundle) BundleSlug() string {
 type SellOrder struct {
 	Order
 	Metadata     *SellOrderMetadata `opensea:"metadata" json:"metadata"`
-	Maker        *BundleAccount     `opensea:"maker" json:"maker"`
-	Taker        *BundleAccount     `opensea:"taker" json:"taker"`
-	FeeRecipient *BundleAccount     `opensea:"fee_recipient" json:"feeRecipient"`
+	Maker        *AccountID         `opensea:"maker" json:"maker"`
+	Taker        *AccountID         `opensea:"taker" json:"taker"`
+	FeeRecipient *AccountID         `opensea:"fee_recipient" json:"feeRecipient"`
 }
 
-type BundleAccount struct {
+type AccountID struct {
 	Account
 	User int32 `opensea:"user" json:"user"`
 }

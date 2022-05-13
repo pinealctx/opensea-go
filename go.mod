@@ -7,7 +7,6 @@ require (
 	github.com/json-iterator/go v1.1.11
 	github.com/pinealctx/restgo v0.1.1
 	github.com/shopspring/decimal v1.3.1
-	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2
 )
 
 require (
@@ -34,6 +33,5 @@ require (
 	go.uber.org/zap v1.19.0 // indirect
 	golang.org/x/crypto v0.0.0-20220315160706-3147a52a75dd // indirect
 	golang.org/x/sys v0.0.0-20220319134239-a9b59b0215f8 // indirect
-	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
 )

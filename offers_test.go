@@ -2,18 +2,16 @@ package opensea
 
 import "testing"
 
-func TestClient_Asset(t *testing.T) {
+func TestClient_Offers(t *testing.T) {
 	var cli = newClient()
-	var asset, err = cli.Asset(ctx, &AssetRequest{
+	var response, err = cli.Offers(ctx, &OffersRequest{
 		AssetContractAddress: "0xed5af388653567af2f388e6224dc7c4b3241c544",
 		TokenID:              "671",
-		AccountAddress:       "",
+		Limit:                20,
 	})
 	if err != nil {
 		t.Error(err)
 		return
 	}
-	for _, o := range asset.Orders {
-		t.Log(o)
-	}
+	t.Log("rsp", response)
 }

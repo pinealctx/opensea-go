@@ -6,7 +6,6 @@ func TestClient_Assets(t *testing.T) {
 	var cli = newClient()
 	var rsp, err = cli.Assets(ctx, &AssetsRequest{
 		OrderDirection: "desc",
-		Offset:         0,
 		Limit:          10,
 	})
 	if err != nil {
@@ -21,7 +20,6 @@ func TestClient_Assets(t *testing.T) {
 	}
 	rsp, err = cli.Assets(ctx, &AssetsRequest{
 		OrderDirection: "desc",
-		Offset:         0,
 		Limit:          10,
 		Cursor:         rsp.Next,
 	})
@@ -38,7 +36,6 @@ func TestClient_Assets_IncludeOrders(t *testing.T) {
 	var cli = newClient()
 	var rsp, err = cli.Assets(ctx, &AssetsRequest{
 		OrderDirection: "desc",
-		Offset:         0,
 		Limit:          10,
 		IncludeOrders:  true,
 	})

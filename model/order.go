@@ -43,8 +43,8 @@ type Order struct {
 	OrderHash            string           `opensea:"order_hash" json:"orderHash"`
 	Metadata             *Metadata        `opensea:"metadata" json:"metadata"`
 	Exchange             string           `opensea:"exchange" json:"exchange"`
-	Maker                *Account         `opensea:"maker" json:"maker"`
-	Taker                *Account         `opensea:"taker" json:"taker"`
+	Maker                *AccountID       `opensea:"maker" json:"maker"`
+	Taker                *AccountID       `opensea:"taker" json:"taker"`
 	CurrentPrice         *decimal.Decimal `opensea:"current_price" json:"currentPrice"`
 	CurrentBounty        string           `opensea:"current_bounty" json:"currentBounty"`
 	BountyMultiple       string           `opensea:"bounty_multiple" json:"bountyMultiple"`
@@ -53,7 +53,7 @@ type Order struct {
 	MakerProtocolFee     string           `opensea:"maker_protocol_fee" json:"makerProtocolFee"`
 	TakerProtocolFee     string           `opensea:"taker_protocol_fee" json:"takerProtocolFee"`
 	MakerReferrerFee     string           `opensea:"maker_referrer_fee" json:"makerReferrerFee"`
-	FeeRecipient         *Account         `opensea:"fee_recipient" json:"feeRecipient"`
+	FeeRecipient         *AccountID       `opensea:"fee_recipient" json:"feeRecipient"`
 	FeeMethod            FeeMethod        `opensea:"fee_method" json:"feeMethod"`
 	Side                 Side             `opensea:"side" json:"side"`
 	SaleKind             SaleKind         `opensea:"sale_kind" json:"saleKind"`

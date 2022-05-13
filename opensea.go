@@ -7,6 +7,10 @@ import (
 	"time"
 )
 
+const (
+	APIKey = "X-API-KEY"
+)
+
 type Client struct {
 	*restgo.Client
 	*option
@@ -19,7 +23,7 @@ func New(fnList ...OptionFn) *Client {
 	}
 	var header = make(http.Header)
 	if o.apiKey != "" {
-		header.Set("X-API-KEY", o.apiKey)
+		header.Set(APIKey, o.apiKey)
 	}
 	header.Set("Accept", "application/json")
 	return &Client{

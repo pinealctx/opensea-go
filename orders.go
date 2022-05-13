@@ -7,12 +7,16 @@ import (
 )
 
 // Orders How to fetch orders from the OpenSea system
-func (c *Client) Orders(ctx context.Context, req *OrderRequest) (*OrderResponse, error) {
-	var rsp, err = c.get(ctx, "/wyvern/v1/orders", restgo.ObjectParams(req)...)
+func (c *Client) Orders(ctx context.Context, req *OrdersRequest) (*OrdersResponse, error) {
+	var params = restgo.ObjectParams(req)
+	if c.test {
+		params = append(params, restgo.NewURLQueryParam(APIKey, c.apiKey))
+	}
+	var rsp, err = c.get(ctx, "/wyvern/v1/orders", params...)
 	if err != nil {
 		return nil, err
 	}
-	var response OrderResponse
+	var response OrdersResponse
 	err = ParseRsp(rsp, &response)
 	if err != nil {
 		return nil, err
@@ -20,7 +24,7 @@ func (c *Client) Orders(ctx context.Context, req *OrderRequest) (*OrderResponse,
 	return &response, nil
 }
 
-type OrderRequest struct {
+type OrdersRequest struct {
 	// Filter by smart contract address for the asset category.
 	// Needs to be defined together with token_id or token_ids.
 	AssetContractAddress string `query:"asset_contract_address"`
@@ -37,10 +41,10 @@ type OrderRequest struct {
 	// which wait for the highest bidder. When "false", exclude those.
 	IsEnglish bool `query:"is_english"`
 	// Only show orders for bundles of assets
-	Bundled bool `query:"bundled"`
+	Bundled bool `query:"bundled,required"`
 	// Include orders on bundles where all assets in the bundle share the address provided
 	// in asset_contract_address or where the bundle's maker is the address provided in owner
-	IncludeBundled bool `query:"include_bundled"`
+	IncludeBundled bool `query:"include_bundled,required"`
 	// Only show orders listed after this timestamp. Seconds since the Unix epoch.
 	// eg: 2017-07-21T17:32:28Z
 	ListedAfter string `query:"listed_after"`
@@ -74,7 +78,7 @@ type OrderRequest struct {
 	OrderDirection string `query:"order_direction,required"`
 }
 
-type OrderResponse struct {
+type OrdersResponse struct {
 	Count  int32          `opensea:"count"`
 	Orders []*model.Order `opensea:"orders"`
 }

@@ -4,10 +4,11 @@ import "testing"
 
 func TestClient_Orders(t *testing.T) {
 	var cli = newClient()
-	var response, err = cli.Orders(ctx, &OrderRequest{
-		AssetContractAddress: "0x622062a3d249cccee76864a148c89484a23a6144",
-		TokenID:              "2",
+	var response, err = cli.Orders(ctx, &OrdersRequest{
+		AssetContractAddress: "0xed5af388653567af2f388e6224dc7c4b3241c544",
+		TokenID:              "671",
 		Limit:                20,
+		Side:                 1,
 		Offset:               0,
 		OrderBy:              "created_date",
 		OrderDirection:       "desc",

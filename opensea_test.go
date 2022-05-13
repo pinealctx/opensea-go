@@ -2,7 +2,12 @@ package opensea
 
 import (
 	"context"
+	"os"
 	"time"
+)
+
+const (
+	envAPIKey = "OPENSEA_API_KEY"
 )
 
 var (
@@ -10,5 +15,9 @@ var (
 )
 
 func newClient() *Client {
-	return New(WithTestNets(true), WithRetryWhenFreqLimit(time.Second, 10))
+	return New(
+		WithTestNets(false),
+		WithAPIKey(os.Getenv(envAPIKey)),
+		WithRetryWhenFreqLimit(time.Second, 10),
+	)
 }
